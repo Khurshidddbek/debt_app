@@ -72,10 +72,13 @@ class _SignInPageState extends State<SignInPage> {
 
                 SizedBox(height: 20,),
 
-                // Button : Forgot password
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
+                    // Button : Sign up
+                    Text('Sign up'),
+
+                    // Button : Forgot password
                     GestureDetector(
                     child: Text('Forgot password?'),
                   ),
