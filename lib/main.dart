@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:qarz_app/pages/create_page.dart';
 import 'package:qarz_app/pages/home_page.dart';
+import 'package:qarz_app/pages/main_page.dart';
 import 'package:qarz_app/pages/settings_page.dart';
 import 'package:qarz_app/pages/signin_page.dart';
 import 'package:qarz_app/pages/signup_page.dart';
@@ -18,10 +19,11 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: SignUpPage(),
+      home: MainPage(),
       routes: {
         SignInPage.id: (context) => SignInPage(),
         SignUpPage.id: (context) => SignUpPage(),
+        MainPage.id: (context) => MainPage(),
         HomePage.id: (context) => HomePage(),
         CreatePage.id: (context) => CreatePage(),
         SettingsPage.id: (context) => SettingsPage(),

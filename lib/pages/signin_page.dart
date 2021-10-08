@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:qarz_app/pages/signup_page.dart';
 
 class SignInPage extends StatefulWidget {
 static final String id = 'signin_page';
@@ -76,7 +77,12 @@ class _SignInPageState extends State<SignInPage> {
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     // Button : Sign up
-                    Text('Sign up'),
+                    GestureDetector(
+                      child: Text('Sign up'),
+                      onTap: () {
+                        Navigator.pushReplacementNamed(context, SignUpPage.id);
+                      },
+                      ),
 
                     // Button : Forgot password
                     GestureDetector(
