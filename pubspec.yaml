@@ -13,6 +13,8 @@ dependencies:
 
 
   cupertino_icons: ^1.0.2
+  iconsax: ^0.0.8
+  animate_do: ^2.0.0
   ##flutter_plus: ^1.0.0 ## Error. Why? - I don't know
 
 dev_dependencies:
