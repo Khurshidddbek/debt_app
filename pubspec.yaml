@@ -15,6 +15,10 @@ dependencies:
   cupertino_icons: ^1.0.2
   iconsax: ^0.0.8
   animate_do: ^2.0.0
+  firebase_core: ^1.7.0
+  fluttertoast: ^8.0.8
+  shared_preferences: ^2.0.7
+  firebase_auth: ^3.1.3
   ##flutter_plus: ^1.0.0 ## Error. Why? - I don't know
 
 dev_dependencies:
@@ -26,8 +30,7 @@ flutter:
   uses-material-design: true
 
   assets:
-    - assets/
-  #   - images/a_dot_ham.jpeg
+    - assets/images/
 
   # fonts:
   #   - family: Schyler

@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "265142903745",
+    "project_id": "debt-app-15821",
+    "storage_bucket": "debt-app-15821.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:265142903745:android:5d0333e0504eddc6888540",
+        "android_client_info": {
+          "package_name": "com.example.qarz_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "265142903745-l4p7t6hhimlo3a6nni4ca4b497jbd00q.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC3UgqryJAwtH6ODoQ0UmhKEzZYWfmf3yc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "265142903745-l4p7t6hhimlo3a6nni4ca4b497jbd00q.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "265142903745-qgr06kk1h0bcnm5cns8e97vp8ufh350r.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.qarzApp"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

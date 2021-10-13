@@ -16,55 +16,20 @@ class _HomePageState extends State<HomePage> {
   bool _isScrolled = false;
 
   List<dynamic> _services = [
-    ['Loans issued', Iconsax.export_1, Colors.blue],
-    ['Debts received', Iconsax.import, Colors.pink],
+    ['Berilgan qarz', Iconsax.export_1, Colors.blue],
+    ['Olingan qarz', Iconsax.import, Colors.pink],
     ['History', Iconsax.wallet_3, Colors.orange],
     ['More', Iconsax.more, Colors.green],
   ];
 
   List<dynamic> _transactions = [
-    [
-      'Javoxir',
-      'https://cdn-icons-png.flaticon.com/512/5849/5849344.png',
-      '21.11',
-      '\$8.90'
-    ],
-    [
-      'Sardor',
-      'https://cdn-icons-png.flaticon.com/512/5849/5849344.png',
-      '13.11',
-      '\$18.90'
-    ],
-    [
-      'Abror',
-      'https://cdn-icons-png.flaticon.com/512/5849/5849344.png',
-      '08.12',
-      '\$20.00'
-    ],
-    [
-      'Abdurasul',
-      'https://cdn-icons-png.flaticon.com/512/5849/5849344.png',
-      '21.12',
-      '\$50.00'
-    ],
-    [
-      'G`ayrat',
-      'https://cdn-icons-png.flaticon.com/512/5849/5849344.png',
-      '21.12',
-      '\$100.00'
-    ],
-    [
-      'Anvar',
-      'https://cdn-icons-png.flaticon.com/512/5849/5849344.png',
-      '23.12',
-      '\$8.90'
-    ],
-    [
-      'Botir',
-      'https://cdn-icons-png.flaticon.com/512/5849/5849344.png',
-      '28.12',
-      '\$4.90'
-    ],
+    ['Javoxir', 'assets/images/avatar-1.png', '21.11', '\$8.90'],
+    ['Bozorchi opa', 'assets/images/avatar-2.png', '13.11', '\$18.90'],
+    ['Sut-qatiq', 'assets/images/avatar-3.png', '08.12', '\$20.00'],
+    ['Abdurasul', 'assets/images/avatar-4.png', '21.12', '\$50.00'],
+    ['Salonchi Nargiz', 'assets/images/avatar-5.png', '21.12', '\$100.00'],
+    ['Anvar', 'assets/images/avatar-6.png', '23.12', '\$8.90'],
+    ['Botir', 'assets/images/avatar-1.png', '28.12', '\$4.90'],
   ];
 
   @override
@@ -196,7 +161,7 @@ class _HomePageState extends State<HomePage> {
                             EdgeInsets.symmetric(horizontal: 20, vertical: 0),
                         onPressed: () {},
                         child: Text(
-                          'Add Debt',
+                          "Qarz qo'shish",
                           style: TextStyle(color: Colors.black, fontSize: 10),
                         ),
                         color: Colors.transparent,
@@ -341,10 +306,10 @@ class _HomePageState extends State<HomePage> {
                               children: [
                                 Row(
                                   children: [
-                                    Image.network(
+                                    Image.asset(
                                       _transactions[index][1],
-                                      width: 50,
                                       height: 50,
+                                      width: 50,
                                     ),
                                     SizedBox(
                                       width: 15,
