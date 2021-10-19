@@ -1,9 +1,11 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:qarz_app/pages/create_page.dart';
 import 'package:qarz_app/pages/home_page.dart';
 import 'package:qarz_app/pages/settings_page.dart';
 import 'package:qarz_app/pages/signin_page.dart';
 import 'package:qarz_app/pages/signup_page.dart';
+import 'package:qarz_app/services/prefs_service.dart';
 
 void main() {
   runApp(MyApp());
@@ -18,7 +20,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: HomePage(),
+      home: SignInPage(),
       routes: {
         SignInPage.id: (context) => SignInPage(),
         SignUpPage.id: (context) => SignUpPage(),
