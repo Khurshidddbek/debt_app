@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:qarz_app/pages/signin_page.dart';
+import 'package:qarz_app/pages/Authentication/signin_page.dart';
 import 'package:qarz_app/services/prefs_service.dart';
 import 'package:qarz_app/services/utils_service.dart';
 

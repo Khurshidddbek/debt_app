@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:qarz_app/pages/home_page.dart';
-import 'package:qarz_app/pages/signin_page.dart';
-import 'package:qarz_app/viewmodel/signup_view_model.dart';
+import 'package:qarz_app/pages/Authentication/signin_page.dart';
+import 'package:qarz_app/viewmodel/Authentication/signup_view_model.dart';
 
 class SignUpPage extends StatefulWidget {
   static final String id = 'signup_page';

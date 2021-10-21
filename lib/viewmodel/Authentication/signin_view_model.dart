@@ -1,12 +1,13 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-class SignUpViewModel extends ChangeNotifier {
-  var nameController = TextEditingController();
-  var emailController = TextEditingController();
-  var passwordController = TextEditingController();
+class SignInViewModel extends ChangeNotifier {
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
 
   var passwordObscure = true;
+
+  final formKey = GlobalKey<FormState>();
 
   Widget ObscurePassword() {
     return GestureDetector(
@@ -23,5 +24,11 @@ class SignUpViewModel extends ChangeNotifier {
                 Icons.remove_red_eye_outlined,
                 color: Colors.black54,
               ));
+  }
+
+  void doSingUp() {
+    if(formKey.currentState!.validate()) {
+
+    }
   }
 }

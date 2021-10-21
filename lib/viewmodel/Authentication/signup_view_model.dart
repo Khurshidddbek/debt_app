@@ -1,11 +1,12 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-class SignInViewModel extends ChangeNotifier {
+class SignUpViewModel extends ChangeNotifier {
+  var nameController = TextEditingController();
   var emailController = TextEditingController();
   var passwordController = TextEditingController();
 
-    var passwordObscure = true;
+  var passwordObscure = true;
 
   Widget ObscurePassword() {
     return GestureDetector(
@@ -23,4 +24,6 @@ class SignInViewModel extends ChangeNotifier {
                 color: Colors.black54,
               ));
   }
+
+  
 }

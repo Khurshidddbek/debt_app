@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:qarz_app/pages/signup_page.dart';
-import 'package:qarz_app/viewmodel/signin_view_model.dart';
+import 'package:qarz_app/pages/Authentication/signup_page.dart';
+import 'package:qarz_app/services/Authentication/validator.dart';
+import 'package:qarz_app/viewmodel/Authentication/signin_view_model.dart';
 
 class SignInPage extends StatefulWidget {
   static final String id = 'signin_page';
@@ -57,38 +58,66 @@ class _SignInPageState extends State<SignInPage> {
                       height: 40,
                     ),
 
-                    // TextField: Email
-                    TextField(
-                      controller: viewModel.emailController,
-                      decoration: InputDecoration(
-                        labelText: 'Email',
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(30),
-                          gapPadding: 0,
-                        ),
-                      ),
-                      keyboardType: TextInputType.emailAddress,
-                    ),
-
-                    SizedBox(
-                      height: 40,
-                    ),
-
-                    // TextField: Password
-                    TextField(
-                        controller: viewModel.passwordController,
-                        style: TextStyle(letterSpacing: 2),
-                        decoration: InputDecoration(
-                          labelText: 'Password',
-                          labelStyle: TextStyle(letterSpacing: 0),
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(30),
-                            gapPadding: 0,
+                    // TextFields
+                    Form(
+                      key: viewModel.formKey,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          // TextField: Email
+                          TextFormField(
+                            controller: viewModel.emailController,
+                            decoration: InputDecoration(
+                              labelText: 'Email',
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(30),
+                                gapPadding: 0,
+                              ),
+                              errorBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(30),
+                                gapPadding: 0,
+                                borderSide: BorderSide(
+                                  color: Colors.red,
+                                ),
+                              ),
+                            ),
+                            keyboardType: TextInputType.emailAddress,
+                            validator: (value) =>
+                                Validator.validateEmail(email: value),
                           ),
-                          suffixIcon: viewModel.ObscurePassword(),
-                        ),
-                        keyboardType: TextInputType.visiblePassword,
-                        obscureText: viewModel.passwordObscure),
+
+                          SizedBox(
+                            height: 40,
+                          ),
+
+                          // TextField: Password
+                          TextFormField(
+                            controller: viewModel.passwordController,
+                            style: TextStyle(letterSpacing: 2),
+                            decoration: InputDecoration(
+                              labelText: 'Password',
+                              labelStyle: TextStyle(letterSpacing: 0),
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(30),
+                                gapPadding: 0,
+                              ),
+                              suffixIcon: viewModel.ObscurePassword(),
+                              errorBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(30),
+                                gapPadding: 0,
+                                borderSide: BorderSide(
+                                  color: Colors.red,
+                                ),
+                              ),
+                            ),
+                            keyboardType: TextInputType.visiblePassword,
+                            obscureText: viewModel.passwordObscure,
+                            validator: (value) =>
+                                Validator.validatePassword(password: value),
+                          ),
+                        ],
+                      ),
+                    ),
 
                     SizedBox(
                       height: 20,
@@ -120,24 +149,27 @@ class _SignInPageState extends State<SignInPage> {
                     ),
 
                     SizedBox(
-                      height: 100,
+                      height: 70,
                     ),
 
                     // Button: Sign in
-                    Padding(
-                      padding: const EdgeInsets.only(left: 220),
-                      child: Container(
-                        height: 80,
-                        width: 80,
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: Colors.blue,
-                        ),
-                        child: Center(
-                          child: Icon(
-                            Icons.arrow_right_alt_rounded,
-                            color: Colors.white,
-                            size: 50,
+                    GestureDetector(
+                      onTap: viewModel.doSingUp,
+                      child: Padding(
+                        padding: const EdgeInsets.only(left: 220),
+                        child: Container(
+                          height: 80,
+                          width: 80,
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: Colors.blue,
+                          ),
+                          child: Center(
+                            child: Icon(
+                              Icons.arrow_right_alt_rounded,
+                              color: Colors.white,
+                              size: 50,
+                            ),
                           ),
                         ),
                       ),

@@ -20,6 +20,7 @@ dependencies:
   shared_preferences: ^2.0.7
   firebase_auth: ^3.1.3
   provider: ^6.0.1
+  flutter_svg_provider: ^0.1.10
   ##flutter_plus: ^1.0.0 ## Error. Why? - I don't know
 
 dev_dependencies:
@@ -31,7 +32,8 @@ flutter:
   uses-material-design: true
 
   assets:
-    - assets/images/
+    - assets/images/authentication/
+    - assets/images/user_avatars/
 
   # fonts:
   #   - family: Schyler
