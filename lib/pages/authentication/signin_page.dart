@@ -34,7 +34,7 @@ class _SignInPageState extends State<SignInPage> {
             size: 20,
           ),
           onPressed: () {
-            Navigator.pushReplacementNamed(context, HomePage.id);
+            Navigator.pop(context);
           },
         ),
       ),

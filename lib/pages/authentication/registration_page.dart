@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg_provider/flutter_svg_provider.dart';
+import 'package:qarz_app/pages/Authentication/signin_page.dart';
+import 'package:qarz_app/pages/Authentication/signup_page.dart';
 
 class RegistrationPage extends StatelessWidget {
   static final String id = 'registration_page';
@@ -19,9 +21,10 @@ class RegistrationPage extends StatelessWidget {
           height: fullHeight,
           padding: EdgeInsets.symmetric(horizontal: 30, vertical: 50),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
+              // Header text
               Column(
                 children: [
                   Text(
@@ -41,6 +44,8 @@ class RegistrationPage extends StatelessWidget {
                   ),
                 ],
               ),
+              
+              // Center image
               Container(
                 child: Image(
                   height: fullHeight / 3,
@@ -64,13 +69,16 @@ class RegistrationPage extends StatelessWidget {
                       style:
                           TextStyle(fontWeight: FontWeight.w600, fontSize: 18),
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pushNamed(context, SignInPage.id);
+                    },
                     shape: RoundedRectangleBorder(
                         side: BorderSide(
                           color: Colors.black,
                         ),
                         borderRadius: BorderRadius.circular(50)),
                   ),
+                  
                   SizedBox(
                     height: 20,
                   ),
@@ -96,7 +104,9 @@ class RegistrationPage extends StatelessWidget {
                             fontWeight: FontWeight.w600,
                             fontSize: 18),
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.pushNamed(context, SignUpPage.id);
+                      },
                       color: Colors.grey[700],
                       elevation: 0,
                       shape: RoundedRectangleBorder(
