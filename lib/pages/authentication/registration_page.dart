@@ -12,6 +12,7 @@ class RegistrationPage extends StatelessWidget {
     final double fullWidth = MediaQuery.of(context).size.width;
 
     return Scaffold(
+      backgroundColor: Colors.grey.shade100,
       body: SafeArea(
         child: Container(
           width: double.infinity,
