@@ -163,31 +163,45 @@ class _SignUpPageState extends State<SignUpPage> {
   Widget makeInput(TextEditingController _controller, String _labelText,
       SignUpViewModel viewModel, bool obscureText) {
     return TextFormField(
-      onEditingComplete: viewModel.doSingUp,
-      controller: _controller,
-      style: TextStyle(letterSpacing: obscureText ? 1 : 0),
-      obscureText: obscureText,
-      decoration: InputDecoration(
-        labelText: _labelText,
-        labelStyle: TextStyle(letterSpacing: 0),
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(30),
-          gapPadding: 0,
-        ),
-        errorBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(30),
-          gapPadding: 0,
-          borderSide: BorderSide(
-            color: Colors.red,
+        onEditingComplete: viewModel.doSingUp,
+        controller: _controller,
+        style: TextStyle(letterSpacing: obscureText ? 1 : 0),
+        obscureText: obscureText,
+        decoration: InputDecoration(
+          labelText: _labelText,
+          labelStyle: TextStyle(letterSpacing: 0),
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(30),
+            gapPadding: 0,
+          ),
+          errorBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(30),
+            gapPadding: 0,
+            borderSide: BorderSide(
+              color: Colors.red,
+            ),
           ),
         ),
-      ),
-      validator: (value) => _labelText == 'Full Name'
-          ? Validator.validateName(name: value)
-          : (_labelText == 'Email'
-              ? Validator.validateEmail(email: value)
-              : Validator.validatePassword(password: value)),
-    );
+        validator: (value) {
+          switch (_labelText) {
+            case 'Full Name':
+              return Validator.validateName(name: value);
+
+            case 'Email':
+              return Validator.validateEmail(email: value);
+
+            case 'Password':
+              return Validator.validatePassword(password: value);
+
+            case 'Confirm password':
+              if (value != viewModel.passwordController.text)
+                return 'Passwords do not match';
+              return Validator.validateName(name: value);
+
+            default:
+              return null;
+          }
+        });
   }
 }
 
