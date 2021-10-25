@@ -4,7 +4,7 @@ class Prefs {
   static Future<bool> saveUserId(String userId) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
 
-    print('PREFS : UserID saved successfully in SharedPreferences.');
+    print('PREFS : UserID saved successfully in SharedPreferences. UserID : $userId');
     return prefs.setString('user_id', userId);
   }
 

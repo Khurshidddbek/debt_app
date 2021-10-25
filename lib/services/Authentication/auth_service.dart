@@ -14,11 +14,10 @@ class AuthService {
 
     try {
       UserCredential userCredential = await _auth.createUserWithEmailAndPassword(email: email, password: password);
-      User? user = userCredential.user;
-      await user!.updateProfile(displayName: name);
-      await user.reload();
-      user = _auth.currentUser;
-
+      user = userCredential.user;
+      // await user.updateProfile(displayName: name);
+      // await user.reload();
+      // user = _auth.currentUser;
       print('AUTHSERVICE : User registered successfully.');
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
