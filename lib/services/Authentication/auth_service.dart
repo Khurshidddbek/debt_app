@@ -18,6 +18,8 @@ class AuthService {
       await user!.updateProfile(displayName: name);
       await user.reload();
       user = _auth.currentUser;
+
+      print('AUTHSERVICE : User registered successfully.');
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
         Utils.fireToast('The password provided is too weak.');
