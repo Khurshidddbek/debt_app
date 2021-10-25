@@ -9,11 +9,13 @@ class AuthService {
 
   // Sign up
   // =============================================================================================================
-  static Future<User?> registerUsingEmailPassword(String name, String email, String password) async {
+  static Future<User?> registerUsingEmailPassword(
+      String name, String email, String password) async {
     User? user;
 
     try {
-      UserCredential userCredential = await _auth.createUserWithEmailAndPassword(email: email, password: password);
+      UserCredential userCredential = await _auth
+          .createUserWithEmailAndPassword(email: email, password: password);
       user = userCredential.user;
       // await user.updateProfile(displayName: name);
       // await user.reload();
@@ -32,15 +34,16 @@ class AuthService {
   }
   // =============================================================================================================
 
-
-
   // Sign in
   // =============================================================================================================
-  static Future<User?> signInUsingEmailPassword(String email, String password) async {
+  static Future<User?> signInUsingEmailPassword(
+      String email, String password) async {
     User? user;
 
+    print('AUTHSERVICE : User logged in successfully.');
     try {
-      UserCredential userCredential = await _auth.signInWithEmailAndPassword(email: email, password: password);
+      UserCredential userCredential = await _auth.signInWithEmailAndPassword(
+          email: email, password: password);
       user = userCredential.user;
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
@@ -53,8 +56,6 @@ class AuthService {
     return user;
   }
   // =============================================================================================================
-
-
 
   static void signOutUser(BuildContext context) {
     _auth.signOut();
