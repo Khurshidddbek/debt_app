@@ -13,14 +13,18 @@ class SignInViewModel extends ChangeNotifier {
 
   static final formKey = GlobalKey<FormState>();
 
+  bool isLoading = false;
+
   doSingIn() async {
     if (formKey.currentState!.validate()) {
-      // Put the indicator START here.
+      isLoading = true;
+      notifyListeners();
 
       User? user = await AuthService.signInUsingEmailPassword(
           emailController.text.trim(), passwordController.text);
 
-      // Put the indicator END here.
+          isLoading = false;
+          notifyListeners();
 
       if (user != null) {
         await Prefs.saveUserId(user.uid);

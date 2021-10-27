@@ -14,16 +14,20 @@ class SignUpViewModel extends ChangeNotifier {
 
   var passwordObscure = true;
 
+  bool isLoading = false;
+
   doSingUp() async {
     if (formKey.currentState!.validate()) {
-      // Put the indicator START here.
+      isLoading = true;
+      notifyListeners();
 
       User? user = await AuthService.registerUsingEmailPassword(
           nameController.text.trim(),
           emailController.text.trim(),
           passwordController.text);
 
-      // Put the indicator END here.
+          isLoading = false;
+      notifyListeners();
 
       if (user != null) {
         await Prefs.saveUserId(user.uid);

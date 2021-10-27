@@ -1,7 +1,9 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:qarz_app/pages/home_page.dart';
 import 'package:qarz_app/services/authentication/validator.dart';
+import 'package:qarz_app/services/utils_service.dart';
 import 'package:qarz_app/viewmodel/Authentication/signin_view_model.dart';
 
 class SignInPage extends StatefulWidget {
@@ -41,111 +43,125 @@ class _SignInPageState extends State<SignInPage> {
       body: ChangeNotifierProvider(
         create: (context) => viewModel,
         child: Consumer<SignInViewModel>(
-          builder: (ctx, model, index) => SingleChildScrollView(
-            child: Container(
-              height: fullHeight,
-              width: fullWidth,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Column(
+          builder: (ctx, model, index) => Stack(
+            children: [
+              SingleChildScrollView(
+                child: Container(
+                  height: fullHeight,
+                  width: fullWidth,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      // Text: Login
                       Column(
                         children: [
-                          Text(
-                            'Login',
-                            style: TextStyle(
-                                fontSize: 30, fontWeight: FontWeight.bold),
-                          ),
-                          SizedBox(
-                            height: 20,
-                          ),
-                          Text(
-                            'Login to your acount',
-                            style:
-                                TextStyle(fontSize: 15, color: Colors.grey[700]),
-                          ),
-                        ],
-                      ),
-              
-                      // Form
-                      Padding(
-                        padding: EdgeInsets.all(40),
-                        child: Form(
-                          key: SignInViewModel.formKey,
-                          child: Column(
+                          // Text: Login
+                          Column(
                             children: [
-                              makeInput(viewModel.emailController, 'Email', viewModel),
-                              SizedBox(
-                                height: 40,
+                              Text(
+                                'Login',
+                                style: TextStyle(
+                                    fontSize: 30, fontWeight: FontWeight.bold),
                               ),
-                              makeInput(viewModel.passwordController, 'Password', viewModel),
+                              SizedBox(
+                                height: 20,
+                              ),
+                              Text(
+                                'Login to your acount',
+                                style: TextStyle(
+                                    fontSize: 15, color: Colors.grey[700]),
+                              ),
                             ],
                           ),
-                        ),
-                      ),
-              
-                      // Button : Sign in
-                      Padding(
-                        padding: EdgeInsets.all(40),
-                        child: Container(
-                          padding: EdgeInsets.only(top: 3, left: 3),
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(50),
-                              border: Border(
-                                bottom: BorderSide(color: Colors.black),
-                                top: BorderSide(color: Colors.black),
-                                left: BorderSide(color: Colors.black),
-                                right: BorderSide(color: Colors.black),
-                              )),
-                          child: MaterialButton(
-                            height: 70,
-                            minWidth: double.infinity,
-                            child: Text(
-                              'Login',
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.w600,
-                                  fontSize: 18),
+
+                          // Form
+                          Padding(
+                            padding: EdgeInsets.all(40),
+                            child: Form(
+                              key: SignInViewModel.formKey,
+                              child: Column(
+                                children: [
+                                  makeInput(viewModel.emailController, 'Email',
+                                      viewModel),
+                                  SizedBox(
+                                    height: 40,
+                                  ),
+                                  makeInput(viewModel.passwordController,
+                                      'Password', viewModel),
+                                ],
+                              ),
                             ),
-                            onPressed: viewModel.doSingIn,
-                            color: Colors.grey[700],
-                            elevation: 0,
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(50)),
                           ),
-                        ),
-                      ),
-              
-                      // Buton : Sign up
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text("Don't have an account? "),
-              
-                          // Button : Sign up
-                          Text(
-                            "Sign up",
-                            style: TextStyle(
-                                fontWeight: FontWeight.w600, fontSize: 18),
+
+                          // Button : Sign in
+                          Padding(
+                            padding: EdgeInsets.all(40),
+                            child: Container(
+                              padding: EdgeInsets.only(top: 3, left: 3),
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(50),
+                                  border: Border(
+                                    bottom: BorderSide(color: Colors.black),
+                                    top: BorderSide(color: Colors.black),
+                                    left: BorderSide(color: Colors.black),
+                                    right: BorderSide(color: Colors.black),
+                                  )),
+                              child: MaterialButton(
+                                height: 70,
+                                minWidth: double.infinity,
+                                child: Text(
+                                  'Login',
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.w600,
+                                      fontSize: 18),
+                                ),
+                                onPressed: viewModel.doSingIn,
+                                color: Colors.grey[700],
+                                elevation: 0,
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(50)),
+                              ),
+                            ),
+                          ),
+
+                          // Buton : Sign up
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text("Don't have an account? "),
+
+                              // Button : Sign up
+                              Text(
+                                "Sign up",
+                                style: TextStyle(
+                                    fontWeight: FontWeight.w600, fontSize: 18),
+                              ),
+                            ],
+                          ),
+
+                          SizedBox(
+                            height: 103,
                           ),
                         ],
                       ),
-                    
-                      SizedBox(height: 103,),
                     ],
                   ),
-                ],
+                ),
               ),
-            ),
+
+              // Circular Progress Indicator
+              viewModel.isLoading
+                  ? Center(child: CupertinoActivityIndicator(radius: 40,))
+                  : SizedBox.shrink(),
+            ],
           ),
         ),
       ),
     );
   }
 
-  Widget makeInput(TextEditingController _controller, String _labelText, SignInViewModel viewModel) {
+  Widget makeInput(TextEditingController _controller, String _labelText,
+      SignInViewModel viewModel) {
     return TextFormField(
       onEditingComplete: viewModel.doSingIn,
       controller: _controller,
