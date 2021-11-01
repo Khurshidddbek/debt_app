@@ -2,6 +2,8 @@ import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 
+import 'contacts_page.dart';
+
 class HomePage extends StatefulWidget {
   static final String id = 'home_page';
 
@@ -159,7 +161,9 @@ class _HomePageState extends State<HomePage> {
                         height: 30,
                         padding:
                             EdgeInsets.symmetric(horizontal: 20, vertical: 0),
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.pushNamed(context, ContactsPage.id);
+                        },
                         child: Text(
                           "Qarz qo'shish",
                           style: TextStyle(color: Colors.black, fontSize: 10),
