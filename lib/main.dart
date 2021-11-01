@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:qarz_app/pages/Authentication/registration_page.dart';
+import 'package:qarz_app/pages/contacts_page.dart';
 import 'package:qarz_app/pages/create_page.dart';
 import 'package:qarz_app/pages/home_page.dart';
 import 'package:qarz_app/pages/settings_page.dart';
@@ -19,7 +20,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: RegistrationPage(),
+      home: ContactsPage(),
       routes: {
         // Authentication
         RegistrationPage.id: (context) => RegistrationPage(),
@@ -30,6 +31,7 @@ class MyApp extends StatelessWidget {
         HomePage.id: (context) => HomePage(),
         CreatePage.id: (context) => CreatePage(),
         SettingsPage.id: (context) => SettingsPage(),
+        ContactsPage.id: (context) => ContactsPage()
       },
     );
   }

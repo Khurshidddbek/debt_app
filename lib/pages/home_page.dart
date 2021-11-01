@@ -23,13 +23,13 @@ class _HomePageState extends State<HomePage> {
   ];
 
   List<dynamic> _transactions = [
-    ['Javoxir', 'assets/images/avatar-1.png', '21.11', '\$8.90'],
-    ['Bozorchi opa', 'assets/images/avatar-2.png', '13.11', '\$18.90'],
-    ['Sut-qatiq', 'assets/images/avatar-3.png', '08.12', '\$20.00'],
-    ['Abdurasul', 'assets/images/avatar-4.png', '21.12', '\$50.00'],
-    ['Salonchi Nargiz', 'assets/images/avatar-5.png', '21.12', '\$100.00'],
-    ['Anvar', 'assets/images/avatar-6.png', '23.12', '\$8.90'],
-    ['Botir', 'assets/images/avatar-1.png', '28.12', '\$4.90'],
+    ['Javoxir', 'assets/images/user_avatars/avatar-1.png', '21.11', '\$8.90'],
+    ['Bozorchi opa', 'assets/images/user_avatars/avatar-2.png', '13.11', '\$18.90'],
+    ['Sut-qatiq', 'assets/images/user_avatars/avatar-3.png', '08.12', '\$20.00'],
+    ['Abdurasul', 'assets/images/user_avatars/avatar-4.png', '21.12', '\$50.00'],
+    ['Salonchi Nargiz', 'assets/images/user_avatars/avatar-5.png', '21.12', '\$100.00'],
+    ['Anvar', 'assets/images/user_avatars/avatar-6.png', '23.12', '\$8.90'],
+    ['Botir', 'assets/images/user_avatars/avatar-1.png', '28.12', '\$4.90'],
   ];
 
   @override
