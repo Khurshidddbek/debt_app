@@ -2,6 +2,8 @@ import 'package:align_positioned/align_positioned.dart';
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 
+import 'create_contact_page.dart';
+
 class ContactsPage extends StatefulWidget {
   static final String id = 'contacts_page';
 
@@ -250,6 +252,13 @@ class _ContactsPageState extends State<ContactsPage> {
             ),
           ],
         ),
+      ),
+      floatingActionButton: FloatingActionButton.extended(
+        onPressed: () {
+          Navigator.pushReplacementNamed(context, CreateContactPage.id);
+        },
+        label: const Text('Add Contact'),
+        icon: const Icon(Icons.add),
       ),
     );
   }

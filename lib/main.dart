@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:qarz_app/pages/Authentication/registration_page.dart';
 import 'package:qarz_app/pages/contacts_page.dart';
-import 'package:qarz_app/pages/create_page.dart';
+import 'package:qarz_app/pages/create_contact_page.dart';
 import 'package:qarz_app/pages/home_page.dart';
 import 'package:qarz_app/pages/settings_page.dart';
 import 'package:qarz_app/pages/Authentication/signin_page.dart';
@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
 
         // Home
         HomePage.id: (context) => HomePage(),
-        CreatePage.id: (context) => CreatePage(),
+        CreateContactPage.id: (context) => CreateContactPage(),
         SettingsPage.id: (context) => SettingsPage(),
         ContactsPage.id: (context) => ContactsPage()
       },
