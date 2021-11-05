@@ -2,6 +2,7 @@ import 'package:align_positioned/align_positioned.dart';
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 
+import 'add_debt_page.dart';
 import 'create_contact_page.dart';
 
 class ContactsPage extends StatefulWidget {
@@ -158,7 +159,12 @@ class _ContactsPageState extends State<ContactsPage> {
                     duration: Duration(milliseconds: (index * 100) + 500),
                     child: GestureDetector(
                       onTap: () {
-                        // Navigator => Add Moned [name, avatar]
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => AddDebtPage(
+                                    name: _contacts[index]['name'],
+                                    avatar: _contacts[index]['avatar'])));
                       },
                       child: Container(
                         margin: EdgeInsets.only(right: 20),
@@ -214,36 +220,46 @@ class _ContactsPageState extends State<ContactsPage> {
                 itemBuilder: (context, index) {
                   return FadeInRight(
                     duration: Duration(milliseconds: (index * 100) + 500),
-                    child: Container(
-                      margin: EdgeInsets.only(bottom: 20),
-                      child: Row(
-                        children: [
-                          Row(
-                            children: [
-                              CircleAvatar(
-                                radius: 30,
-                                backgroundColor: Colors.red[100],
-                                backgroundImage:
-                                    AssetImage(_contacts[index]['avatar']),
-                              ),
-                              SizedBox(width: 10),
-                              Text(_contacts[index]['name'],
-                                  style: TextStyle(
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.w600,
-                                  )),
-                            ],
-                          ),
-                          Spacer(),
-                          IconButton(
-                            onPressed: () {},
-                            icon: Icon(
-                              Icons.arrow_forward_ios,
+                    child: GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => AddDebtPage(
+                                    name: _contacts[index]['name'],
+                                    avatar: _contacts[index]['avatar'])));
+                      },
+                      child: Container(
+                        margin: EdgeInsets.only(bottom: 20),
+                        child: Row(
+                          children: [
+                            Row(
+                              children: [
+                                CircleAvatar(
+                                  radius: 30,
+                                  backgroundColor: Colors.red[100],
+                                  backgroundImage:
+                                      AssetImage(_contacts[index]['avatar']),
+                                ),
+                                SizedBox(width: 10),
+                                Text(_contacts[index]['name'],
+                                    style: TextStyle(
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.w600,
+                                    )),
+                              ],
                             ),
-                            color: Colors.black,
-                            iconSize: 15,
-                          )
-                        ],
+                            Spacer(),
+                            IconButton(
+                              onPressed: () {},
+                              icon: Icon(
+                                Icons.arrow_forward_ios,
+                              ),
+                              color: Colors.black,
+                              iconSize: 15,
+                            )
+                          ],
+                        ),
                       ),
                     ),
                   );
@@ -270,14 +286,13 @@ class _ContactsPageState extends State<ContactsPage> {
       duration: Duration(milliseconds: (index * 100) + 500),
       child: GestureDetector(
         onTap: () {
-          //  Navigator.push(context,
-          //    MaterialPageRoute(
-          //      builder: (context) => SendMoney(
-          //        name: _contacts[index]['name'],
-          //        avatar: _contacts[index]['avatar']
-          //      )
-          //    )
-          //  );
+          print('Salim');
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => AddDebtPage(
+                      name: _contacts[index]['name'],
+                      avatar: _contacts[index]['avatar'])));
         },
         child: Container(
           margin: EdgeInsets.only(right: 20),

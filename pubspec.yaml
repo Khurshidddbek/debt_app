@@ -22,6 +22,8 @@ dependencies:
   provider: ^6.0.1
   flutter_svg_provider: ^0.1.10
   align_positioned: ^3.0.0
+  pattern_formatter: ^2.0.0
+  scrollable_positioned_list: ^0.2.2
   ##flutter_plus: ^1.0.0 ## Error. Why? - I don't know
 
 dev_dependencies:
