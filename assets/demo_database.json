@@ -1,0 +1,86 @@
+{
+    "userInfo": {
+        "fullname": "Sobirov Xurshid",
+        "email": "Khurshidddbek@gmail.com",
+        "password": "ParolYoq",
+        "avatar": "1",
+        "uid": "fadasdfadfada",
+        "deviceId": "dsf343g4g34",
+        "deviceToken": "adafegerd9kewefffse444",
+        "deviceType": "Android"
+    },
+
+    "contacts": {
+        "wegef434g3g": {
+            "fullname": "Abdukarimov Anvar",
+            "avatar": "6",
+            "id": "wegef434g3g"
+        },
+        "dfasf434g3g": {
+            "fullname": "Salimov Javoxir",
+            "avatar": "2",
+            "id": "dfasf434g3g"
+        },
+        "asdfdfasf434g3g": {
+            "fullname": "Karimov Dilmurod",
+            "avatar": "5",
+            "id": "asdfdfasf434g3g"
+        }
+    },
+
+    "takenDebt": {
+        "wegef434g3g": {
+            "fullname": "Abdukarimov Anvar",
+            "avatar": "6",
+            "id": "wegef434g3g",
+            "sum": "500",
+            "valuta": "usd",
+            "year": "2021",
+            "month": "oct",
+            "day": "25",
+            "time": "13:30",
+            "note": "Magazinga olib borib berishim kerak"
+        },
+        "asdfdfasf434g3g": {
+            "fullname": "Karimov Dilmurod",
+            "avatar": "5",
+            "id": "asdfdfasf434g3g",
+            "sum": "250",
+            "valuta": "usd",
+            "year": "2021",
+            "month": "dec",
+            "day": "3",
+            "time": "08:30",
+            "note": "8600 3345 3424 5435 Plastigiga tashlab qo`yishim kerak"
+        }
+    },
+
+    "givenDebt": {},
+    
+    "history": {
+        "wegef434g3g": {
+            "fullname": "Abdukarimov Anvar",
+            "avatar": "6",
+            "id": "wegef434g3g",
+            "sum": "500",
+            "valuta": "usd",
+            "year": "2021",
+            "month": "oct",
+            "day": "25",
+            "time": "13:30",
+            "note": "Magazinga olib borib berishim kerak"
+        },
+        "asdfdfasf434g3g": {
+            "fullname": "Karimov Dilmurod",
+            "avatar": "5",
+            "id": "asdfdfasf434g3g",
+            "sum": "250",
+            "valuta": "usd",
+            "year": "2021",
+            "month": "dec",
+            "day": "3",
+            "time": "08:30",
+            "note": "8600 3345 3424 5435 Plastigiga tashlab qo`yishim kerak"
+        }
+    }
+}
