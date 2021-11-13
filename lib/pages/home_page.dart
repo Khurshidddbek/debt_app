@@ -18,12 +18,12 @@ class _HomePageState extends State<HomePage> {
   late ScrollController _scrollController;
   bool _isScrolled = false;
 
-  List<dynamic> _services = [
-    ['Berilgan qarz', Iconsax.export_1, Colors.blue],
-    ['Olingan qarz', Iconsax.import, Colors.pink],
-    ['History', Iconsax.wallet_3, Colors.orange],
-    ['More', Iconsax.more, Colors.green],
-  ];
+  // List<dynamic> _services = [
+  //   ['Contacts', Iconsax.profile_2user, Colors.blue],
+  //   ['Olingan qarz', Iconsax.import, Colors.pink],
+  //   ['History', Iconsax.wallet_3, Colors.orange],
+  //   ['Settings', Iconsax.setting_2, Colors.green],
+  // ];
 
   List<dynamic> _transactions = [
     ['Javoxir', 'assets/images/user_avatars/avatar-1.png', '21.11', '\$8.90'],
@@ -151,7 +151,7 @@ class _HomePageState extends State<HomePage> {
 
                 ListTile(
                   onTap: () {},
-                  leading: Icon(Iconsax.chart_2),
+                  leading: Icon(Iconsax.wallet_3),
                   title: Text('History'),
                 ),
 
@@ -196,6 +196,7 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
 
+      // Home Page
       child: Scaffold(
           backgroundColor: Colors.grey.shade100,
           body: CustomScrollView(controller: _scrollController, slivers: [
@@ -228,11 +229,11 @@ class _HomePageState extends State<HomePage> {
                   icon: Icon(Iconsax.notification, color: Colors.grey.shade700),
                   onPressed: () {},
                 ),
-                // Button : More
-                IconButton(
-                  icon: Icon(Iconsax.more, color: Colors.grey.shade700),
-                  onPressed: () {},
-                ),
+                // // Button : More
+                // IconButton(
+                //   icon: Icon(Iconsax.more, color: Colors.grey.shade700),
+                //   onPressed: () {},
+                // ),
               ],
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.only(
@@ -348,63 +349,71 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
             ),
-            SliverList(
-                delegate: SliverChildListDelegate([
-              SizedBox(
-                height: 20,
-              ),
-              Container(
-                padding: EdgeInsets.only(top: 20),
-                height: 115,
-                width: double.infinity,
-                child: ListView.builder(
-                  scrollDirection: Axis.horizontal,
-                  itemCount: _services.length,
-                  itemBuilder: (context, index) {
-                    return FadeInDown(
-                      duration: Duration(milliseconds: (index + 1) * 100),
-                      child: AspectRatio(
-                        aspectRatio: 1,
-                        child: GestureDetector(
-                          onTap: () {
-                            if (_services[index][0] == 'Transfer') {
-                              // Navigator.push(context, MaterialPageRoute(builder: (context) => ContactPage()));
-                            }
-                          },
-                          child: Column(
-                            children: [
-                              Container(
-                                width: 60,
-                                height: 60,
-                                decoration: BoxDecoration(
-                                  color: Colors.grey.shade900,
-                                  borderRadius: BorderRadius.circular(20),
-                                ),
-                                child: Center(
-                                  child: Icon(
-                                    _services[index][1],
-                                    color: Colors.white,
-                                    size: 25,
-                                  ),
-                                ),
-                              ),
-                              SizedBox(
-                                height: 10,
-                              ),
-                              Text(
-                                _services[index][0],
-                                style: TextStyle(
-                                    color: Colors.grey.shade800, fontSize: 12),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    );
-                  },
-                ),
-              ),
-            ])),
+
+            // // Buttons
+            // SliverList(
+            //     delegate: SliverChildListDelegate([
+            //   SizedBox(
+            //     height: 20,
+            //   ),
+
+            //   Container(
+            //     padding: EdgeInsets.only(top: 20),
+            //     height: 115,
+            //     width: double.infinity,
+            //     child: ListView.builder(
+            //       scrollDirection: Axis.horizontal,
+            //       itemCount: _services.length,
+            //       itemBuilder: (context, index) {
+            //         return FadeInDown(
+            //           duration: Duration(milliseconds: (index + 1) * 100),
+            //           child: AspectRatio(
+            //             aspectRatio: 1,
+            //             child: GestureDetector(
+            //               onTap: () {
+            //                 if (_services[index][0] == 'Transfer') {
+            //                   // Navigator.push(context, MaterialPageRoute(builder: (context) => ContactPage()));
+            //                 }
+            //               },
+            //               child: Column(
+            //                 children: [
+            //                   // Icon
+            //                   Container(
+            //                     width: 60,
+            //                     height: 60,
+            //                     decoration: BoxDecoration(
+            //                       color: Colors.grey.shade900,
+            //                       borderRadius: BorderRadius.circular(20),
+            //                     ),
+            //                     child: Center(
+            //                       child: Icon(
+            //                         _services[index][1],
+            //                         color: Colors.white,
+            //                         size: 25,
+            //                       ),
+            //                     ),
+            //                   ),
+
+            //                   SizedBox(
+            //                     height: 10,
+            //                   ),
+
+            //                   Text(
+            //                     _services[index][0],
+            //                     style: TextStyle(
+            //                         color: Colors.grey.shade800, fontSize: 12),
+            //                   ),
+            //                 ],
+            //               ),
+            //             ),
+            //           ),
+            //         );
+            //       },
+            //     ),
+            //   ),
+            // ])),
+
+            // List
             SliverFillRemaining(
               child: Container(
                 padding: EdgeInsets.only(left: 20, right: 20, top: 30),
