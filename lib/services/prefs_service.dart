@@ -4,18 +4,32 @@ class Prefs {
   static Future<bool> saveUserId(String userId) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
 
-    print('PREFS : UserID saved successfully in SharedPreferences. UserID : $userId');
-    return prefs.setString('user_id', userId);
+    print(
+        'PREFS : UserID saved successfully in SharedPreferences. UserID : $userId');
+    return prefs.setString('userId', userId);
   }
 
-  static Future<String?> loadUserId() async {
+  static Future<String> loadUserId() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    String? token = prefs.getString('userId');
+    String token = prefs.getString('userId')!;
     return token;
   }
 
   static Future<bool> removeUserId() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     return prefs.remove('userId');
+  }
+
+  // Firebase Token
+  // Required for notification
+  static Future<bool> saveFCM(String fcmToken) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    return prefs.setString('fcmToken', fcmToken);
+  }
+
+  static Future<String?> loadFCM() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String? token = prefs.getString('fcmToken');
+    return token;
   }
 }

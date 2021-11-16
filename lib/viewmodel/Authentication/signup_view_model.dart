@@ -1,7 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:qarz_app/model/user_model.dart' as user_model;
 import 'package:qarz_app/services/Authentication/auth_service.dart';
+import 'package:qarz_app/services/firestore_service/user_data_service.dart';
 import 'package:qarz_app/services/prefs_service.dart';
 
 class SignUpViewModel extends ChangeNotifier {
@@ -26,23 +28,30 @@ class SignUpViewModel extends ChangeNotifier {
           emailController.text.trim(),
           passwordController.text);
 
-          isLoading = false;
+      isLoading = false;
       notifyListeners();
 
       if (user != null) {
+        print('doSignUp user.id: ${user.uid.toString()}');
         await Prefs.saveUserId(user.uid);
 
-        // Firebase store user.
+        user_model.User userModel = user_model.User(
+          fullname: nameController.text.trim(),
+          email: emailController.text.trim(),
+          password: passwordController.text,
+          avatar: '1',
+          uid: await Prefs.loadUserId(),
+        );
 
+        UserDataService.storeUser(userModel).then((value) {
+          print('\n\n Complate:\n\n');
+          print(value.toString());
+        });
         // Navigator => HomePage
       } else
         return;
     }
   }
-
-
-
-
 
   // Widget ObscurePassword() {
   //   return GestureDetector(

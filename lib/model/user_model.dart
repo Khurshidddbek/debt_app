@@ -1,31 +1,31 @@
 import 'dart:convert';
 
 class User {
-    User({
-        required this.fullname,
-        required this.email,
-        required this.password,
-        required this.avatar,
-        required this.uid,
-        required this.deviceId,
-        required this.deviceToken,
-        required this.deviceType,
-    });
+  User({
+    required this.fullname,
+    required this.email,
+    required this.password,
+    required this.avatar,
+    required this.uid,
+    this.deviceId,
+    this.deviceToken,
+    this.deviceType,
+  });
 
-    String fullname;
-    String email;
-    String password;
-    String avatar;
-    String uid;
-    String deviceId;
-    String deviceToken;
-    String deviceType;
+  String fullname;
+  String email;
+  String password;
+  String avatar;
+  String uid;
+  String? deviceId;
+  String? deviceToken;
+  String? deviceType;
 
-    factory User.fromRawJson(String str) => User.fromJson(json.decode(str));
+  factory User.fromRawJson(String str) => User.fromJson(json.decode(str));
 
-    String toRawJson() => json.encode(toJson());
+  String toRawJson() => json.encode(toJson());
 
-    factory User.fromJson(Map<String, dynamic> json) => User(
+  factory User.fromJson(Map<String, dynamic> json) => User(
         fullname: json["fullname"],
         email: json["email"],
         password: json["password"],
@@ -34,9 +34,9 @@ class User {
         deviceId: json["deviceId"],
         deviceToken: json["deviceToken"],
         deviceType: json["deviceType"],
-    );
+      );
 
-    Map<String, dynamic> toJson() => {
+  Map<String, dynamic> toJson() => {
         "fullname": fullname,
         "email": email,
         "password": password,
@@ -45,5 +45,5 @@ class User {
         "deviceId": deviceId,
         "deviceToken": deviceToken,
         "deviceType": deviceType,
-    };
+      };
 }
