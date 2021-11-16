@@ -115,7 +115,7 @@ class _SignInPageState extends State<SignInPage> {
                                       fontWeight: FontWeight.w600,
                                       fontSize: 18),
                                 ),
-                                onPressed: viewModel.doSingIn,
+                                onPressed: viewModel.doSignIn,
                                 color: Colors.grey[700],
                                 elevation: 0,
                                 shape: RoundedRectangleBorder(
@@ -151,7 +151,10 @@ class _SignInPageState extends State<SignInPage> {
 
               // Circular Progress Indicator
               viewModel.isLoading
-                  ? Center(child: CupertinoActivityIndicator(radius: 40,))
+                  ? Center(
+                      child: CupertinoActivityIndicator(
+                      radius: 40,
+                    ))
                   : SizedBox.shrink(),
             ],
           ),
@@ -163,7 +166,7 @@ class _SignInPageState extends State<SignInPage> {
   Widget makeInput(TextEditingController _controller, String _labelText,
       SignInViewModel viewModel) {
     return TextFormField(
-      onEditingComplete: viewModel.doSingIn,
+      onEditingComplete: viewModel.doSignIn,
       controller: _controller,
       style: TextStyle(letterSpacing: _labelText == 'Email' ? 0 : 1),
       obscureText: _labelText == 'Email' ? false : true,

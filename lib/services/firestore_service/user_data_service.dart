@@ -21,4 +21,13 @@ class UserDataService {
 
     return collection.doc(user.uid).set(user.toJson());
   }
+
+  static Future<User> loadUser() async {
+    String uid = await Prefs.loadUserId();
+    var value = await collection.doc(uid).get();
+
+    User user = User.fromJson(value.data() as Map<String, dynamic>);
+
+    return user;
+  }
 }
