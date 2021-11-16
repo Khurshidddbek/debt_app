@@ -30,4 +30,9 @@ class UserDataService {
 
     return user;
   }
+
+  static Future updateUser(User user) async {
+    String uid = await Prefs.loadUserId();
+    return collection.doc(uid).update(user.toJson());
+  }
 }
