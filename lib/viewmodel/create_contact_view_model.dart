@@ -5,7 +5,8 @@ import 'package:qarz_app/services/firestore_service/contact_data_serivce.dart';
 
 class CreateContactViewModel extends ChangeNotifier {
   var nameController = TextEditingController();
-  late String userAvatarIndex;
+  var nameControllerValidator = false;
+  var userAvatarIndex = 0;
 
   bool isLoading = false;
 
@@ -13,13 +14,33 @@ class CreateContactViewModel extends ChangeNotifier {
     isLoading = true;
     notifyListeners();
 
+    if (nameController.text.isEmpty)
+      nameControllerValidator = true;
+    else {
+      // Create Contact
+      await ContactDataService.storeContact(Contact(
+          fullname: nameController.text,
+          avatar: userAvatarIndex.toString(),
+          id: DateTime.now().millisecondsSinceEpoch.toString()));
+
+      isLoading = false;
+      notifyListeners();
+
+      // Navigator => ContacsPage and refresh Contacts list
+    }
+
     // for test
-    var contact = Contact(fullname: "Contact 2", avatar: "2", id: "erwlj33hg");
+    // var contact = Contact(fullname: "Contact 2", avatar: "2", id: "erwlj33hg");
 
-    await ContactDataService.storeContact(contact).then((value) =>
-        print("doCreateContact : storeContact response : " + value.toString()));
+    // await ContactDataService.storeContact(contact).then((value) =>
+    //     print("doCreateContact : storeContact response : " + value.toString()));
 
-    isLoading = false;
+    // isLoading = false;
+    // notifyListeners();
+  }
+
+  userAvatarSelection(int index) {
+    userAvatarIndex = index;
     notifyListeners();
   }
 }

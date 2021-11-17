@@ -16,7 +16,6 @@ class CreateContactPage extends StatefulWidget {
 
 class _CreateContactPageState extends State<CreateContactPage> {
   var viewModel = CreateContactViewModel();
-  String userImage = userAvatars[0];
 
   @override
   Widget build(BuildContext context) {
@@ -78,19 +77,27 @@ class _CreateContactPageState extends State<CreateContactPage> {
                                             scrollDirection: Axis.horizontal,
                                             itemCount: userAvatars.length,
                                             itemBuilder: (context, index) {
-                                              return Container(
-                                                width: 100,
-                                                margin:
-                                                    EdgeInsets.only(right: 10),
-                                                decoration: BoxDecoration(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            10),
-                                                    image: DecorationImage(
-                                                      fit: BoxFit.cover,
-                                                      image: AssetImage(
-                                                          userAvatars[index]),
-                                                    )),
+                                              return GestureDetector(
+                                                onTap: () {
+                                                  viewModel.userAvatarSelection(
+                                                      index);
+
+                                                  Navigator.pop(context);
+                                                },
+                                                child: Container(
+                                                  width: 100,
+                                                  margin: EdgeInsets.only(
+                                                      right: 10),
+                                                  decoration: BoxDecoration(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              10),
+                                                      image: DecorationImage(
+                                                        fit: BoxFit.cover,
+                                                        image: AssetImage(
+                                                            userAvatars[index]),
+                                                      )),
+                                                ),
                                               );
                                             }),
                                       ),
@@ -111,7 +118,8 @@ class _CreateContactPageState extends State<CreateContactPage> {
                                 Padding(
                                     padding: EdgeInsets.all(8),
                                     child: Image(
-                                      image: AssetImage(userImage),
+                                      image: AssetImage(userAvatars[
+                                          viewModel.userAvatarIndex]),
                                       fit: BoxFit.cover,
                                     )),
                                 Container(
@@ -137,6 +145,7 @@ class _CreateContactPageState extends State<CreateContactPage> {
                         child: Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 50),
                           child: TextField(
+                            controller: viewModel.nameController,
                             autofocus: true,
                             textAlign: TextAlign.center,
                             cursorColor: Colors.black,
@@ -148,6 +157,9 @@ class _CreateContactPageState extends State<CreateContactPage> {
                               hintText: "Enter Full name",
                               hintStyle:
                                   TextStyle(color: Colors.grey, fontSize: 20),
+                              errorText: viewModel.nameControllerValidator
+                                  ? 'Full name Can\'t Be Empty'
+                                  : null,
                             ),
                           ),
                         ),
