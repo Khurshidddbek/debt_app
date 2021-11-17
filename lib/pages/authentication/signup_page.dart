@@ -1,10 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:qarz_app/pages/home_page.dart';
 import 'package:qarz_app/services/authentication/validator.dart';
 import 'package:qarz_app/viewmodel/Authentication/signup_view_model.dart';
-
-import '../home_page.dart';
 
 class SignUpPage extends StatefulWidget {
   static final String id = 'signup_page';
@@ -80,8 +79,8 @@ class _SignUpPageState extends State<SignUpPage> {
                               key: SignUpViewModel.formKey,
                               child: Column(
                                 children: [
-                                  makeInput(viewModel.nameController, 'Full Name',
-                                      viewModel, false),
+                                  makeInput(viewModel.nameController,
+                                      'Full Name', viewModel, false),
                                   SizedBox(
                                     height: 40,
                                   ),
@@ -102,7 +101,7 @@ class _SignUpPageState extends State<SignUpPage> {
                             ),
                           ),
 
-                          // Button : Sign in
+                          // Button : Sign up
                           Padding(
                             padding: EdgeInsets.all(40),
                             child: Container(
@@ -134,19 +133,27 @@ class _SignUpPageState extends State<SignUpPage> {
                             ),
                           ),
 
-                          // Buton : Sign up
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text("Already have an account? "),
+                          // Buton : Sign in
+                          GestureDetector(
+                            // For test
+                            onTap: () {
+                              Navigator.pushNamedAndRemoveUntil(
+                                  context, HomePage.id, (route) => false);
+                            },
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text("Already have an account? "),
 
-                              // Button : Sign up
-                              Text(
-                                "Login",
-                                style: TextStyle(
-                                    fontWeight: FontWeight.w600, fontSize: 18),
-                              ),
-                            ],
+                                // Button : Sign up
+                                Text(
+                                  "Login",
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.w600,
+                                      fontSize: 18),
+                                ),
+                              ],
+                            ),
                           ),
 
                           SizedBox(
@@ -158,10 +165,13 @@ class _SignUpPageState extends State<SignUpPage> {
                   ),
                 ),
               ),
-            
+
               // Circular Progress Indicator
               viewModel.isLoading
-                  ? Center(child: CupertinoActivityIndicator(radius: 40,))
+                  ? Center(
+                      child: CupertinoActivityIndicator(
+                      radius: 40,
+                    ))
                   : SizedBox.shrink(),
             ],
           ),
