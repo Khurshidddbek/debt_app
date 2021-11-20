@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:pattern_formatter/numeric_formatter.dart';
 import 'package:provider/provider.dart';
+import 'package:qarz_app/model/contact_model.dart';
 import 'package:qarz_app/viewmodel/add_debt_view_model.dart';
 import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
 
@@ -563,7 +564,10 @@ class _AddDebtPageState extends State<AddDebtPage> {
                               borderRadius: BorderRadius.circular(10),
                               color: Colors.black,
                               child: MaterialButton(
-                                onPressed: () {},
+                                onPressed: () => viewModel.doAddDebt(Contact(
+                                    fullname: widget.name,
+                                    avatar: widget.avatar,
+                                    id: "Here is the contact id.")),
                                 minWidth: double.infinity,
                                 height: 50,
                                 child: Text(
