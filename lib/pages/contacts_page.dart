@@ -3,6 +3,7 @@ import 'package:animate_do/animate_do.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:qarz_app/values/user_avatars.dart';
 import 'package:qarz_app/viewmodel/contacts_view_model.dart';
 
 import 'add_debt_page.dart';
@@ -19,6 +20,12 @@ class ContactsPage extends StatefulWidget {
 
 class _ContactsPageState extends State<ContactsPage> {
   var viewModel = ContactsViewModel();
+
+  @override
+  void initState() {
+    super.initState();
+    viewModel.loadContacts();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -67,7 +74,7 @@ class _ContactsPageState extends State<ContactsPage> {
           builder: (ctx, model, index) => Stack(
             children: [
               // If the ContactList is empty
-              if (viewModel.contactsList.isEmpty)
+              if (viewModel.contactsList == null)
                 Center(
                   child: Text(
                     'Contact not available. Please add Contact.',
@@ -84,7 +91,7 @@ class _ContactsPageState extends State<ContactsPage> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       // Users : Circle Animations
-                      if (viewModel.contactsList.length > 5)
+                      if (viewModel.contactsList!.length > 5)
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
@@ -160,7 +167,7 @@ class _ContactsPageState extends State<ContactsPage> {
                         padding: EdgeInsets.only(left: 20),
                         child: ListView.builder(
                           scrollDirection: Axis.horizontal,
-                          itemCount: viewModel.contactsList.length,
+                          itemCount: viewModel.contactsList!.length,
                           itemBuilder: (context, index) {
                             return FadeInRight(
                               duration:
@@ -171,11 +178,14 @@ class _ContactsPageState extends State<ContactsPage> {
                                       context,
                                       MaterialPageRoute(
                                           builder: (context) => AddDebtPage(
-                                              name: viewModel
-                                                  .contactsList[index]['name'],
-                                              avatar:
-                                                  viewModel.contactsList[index]
-                                                      ['avatar'])));
+                                                name: viewModel
+                                                    .contactsList![index]
+                                                    .fullname,
+                                                avatar: userAvatars[int.parse(
+                                                    viewModel
+                                                        .contactsList![index]
+                                                        .avatar)],
+                                              )));
                                 },
                                 child: Container(
                                   margin: EdgeInsets.only(right: 20),
@@ -185,14 +195,15 @@ class _ContactsPageState extends State<ContactsPage> {
                                       CircleAvatar(
                                         radius: 30,
                                         backgroundColor: Colors.blueGrey[100],
-                                        backgroundImage: AssetImage(viewModel
-                                            .contactsList[index]['avatar']),
+                                        backgroundImage: AssetImage(userAvatars[
+                                            int.parse(viewModel
+                                                .contactsList![index].avatar)]),
                                       ),
                                       SizedBox(
                                         height: 10,
                                       ),
                                       Text(
-                                        viewModel.contactsList[index]['name'],
+                                        viewModel.contactsList![index].fullname,
                                         style: TextStyle(
                                             fontSize: 14,
                                             fontWeight: FontWeight.w600),
@@ -229,7 +240,7 @@ class _ContactsPageState extends State<ContactsPage> {
                         padding: EdgeInsets.only(left: 20),
                         child: ListView.builder(
                           physics: BouncingScrollPhysics(),
-                          itemCount: viewModel.contactsList.length,
+                          itemCount: viewModel.contactsList!.length,
                           itemBuilder: (context, index) {
                             return FadeInRight(
                               duration:
@@ -241,10 +252,11 @@ class _ContactsPageState extends State<ContactsPage> {
                                       MaterialPageRoute(
                                           builder: (context) => AddDebtPage(
                                               name: viewModel
-                                                  .contactsList[index]['name'],
-                                              avatar:
-                                                  viewModel.contactsList[index]
-                                                      ['avatar'])));
+                                                  .contactsList![index]
+                                                  .fullname,
+                                              avatar: userAvatars[int.parse(
+                                                  viewModel.contactsList![index]
+                                                      .avatar)])));
                                 },
                                 child: Container(
                                   margin: EdgeInsets.only(bottom: 20),
@@ -256,13 +268,14 @@ class _ContactsPageState extends State<ContactsPage> {
                                             radius: 30,
                                             backgroundColor: Colors.red[100],
                                             backgroundImage: AssetImage(
-                                                viewModel.contactsList[index]
-                                                    ['avatar']),
+                                                userAvatars[int.parse(viewModel
+                                                    .contactsList![index]
+                                                    .avatar)]),
                                           ),
                                           SizedBox(width: 10),
                                           Text(
-                                              viewModel.contactsList[index]
-                                                  ['name'],
+                                              viewModel.contactsList![index]
+                                                  .fullname,
                                               style: TextStyle(
                                                 fontSize: 14,
                                                 fontWeight: FontWeight.w600,
@@ -323,8 +336,9 @@ class _ContactsPageState extends State<ContactsPage> {
               context,
               MaterialPageRoute(
                   builder: (context) => AddDebtPage(
-                      name: viewModel.contactsList[index]['name'],
-                      avatar: viewModel.contactsList[index]['avatar'])));
+                      name: viewModel.contactsList![index].fullname,
+                      avatar: userAvatars[
+                          int.parse(viewModel.contactsList![index].avatar)])));
         },
         child: Container(
           margin: EdgeInsets.only(right: 20),
@@ -336,8 +350,8 @@ class _ContactsPageState extends State<ContactsPage> {
                 child: CircleAvatar(
                   radius: 30,
                   backgroundColor: Colors.green.shade100,
-                  backgroundImage:
-                      AssetImage(viewModel.contactsList[index]['avatar']),
+                  backgroundImage: AssetImage(userAvatars[
+                      int.parse(viewModel.contactsList![index].avatar)]),
                 ),
               ),
             ],

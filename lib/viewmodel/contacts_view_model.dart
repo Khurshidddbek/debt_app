@@ -1,32 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:qarz_app/model/contact_model.dart';
+import 'package:qarz_app/services/firestore_service/contact_data_serivce.dart';
 
 class ContactsViewModel extends ChangeNotifier {
   bool isLoading = false;
 
-  List<dynamic> contactsList = [
-    {
-      'name': 'Salim',
-      'avatar': 'assets/images/user_avatars/avatar-1.png',
-    },
-    {
-      'name': 'Qodir',
-      'avatar': 'assets/images/user_avatars/avatar-2.png',
-    },
-    {
-      'name': 'Zebo',
-      'avatar': 'assets/images/user_avatars/avatar-3.png',
-    },
-    {
-      'name': 'Abdullajon',
-      'avatar': 'assets/images/user_avatars/avatar-4.png',
-    },
-    {
-      'name': 'Qashqadaryo',
-      'avatar': 'assets/images/user_avatars/avatar-5.png',
-    },
-    {
-      'name': 'Qodirali',
-      'avatar': 'assets/images/user_avatars/avatar-6.png',
-    }
-  ];
+  List<Contact>? contactsList;
+
+  loadContacts() {
+    print('LOADCONTACTS');
+    isLoading = true;
+    notifyListeners();
+
+    ContactDataService.loadContactsList().then((value) {
+      print('LOADCONTACTS VALUE : $value');
+      contactsList = value;
+      notifyListeners();
+    });
+
+    isLoading = false;
+    notifyListeners();
+  }
 }

@@ -13,18 +13,29 @@ class ContactDataService {
 
     return collection.doc(uid).collection('contacts').add(contact.toJson());
   }
+
+  static Future<List<Contact>?> loadContactsList() async {
+    List<Contact> contacts = [];
+    String uid = await Prefs.loadUserId();
+
+    var querySnapshot = await collection.doc(uid).collection("contacts").get();
+
+    querySnapshot.docs.forEach((result) {
+      contacts.add(Contact.fromJson(result.data()));
+    });
+
+    return contacts;
+  }
 }
 
-// static Future<Post> storePost(Post post) async {
-//     User me = await loadUser();
-//     post.uid = me.uid;
-//     post.fullname = me.fullname;
-//     post.img_user = me.img_url;
-//     post.date = Utils.currentDate();
-
-//     String postId = _firestore.collection(folder_users).document(me.uid).collection(folder_posts).document().documentID;
-//     post.id = postId;
-
-//     await _firestore.collection(folder_users).document(me.uid).collection(folder_posts).document(postId).setData(post.toJson());
-//     return post;
+// _actionRemovePost(Post post) async{
+//     var result = await Utils.dialogCommon(context, "Insta Clone", "Do you want to remove this post?", false);
+//     if(result != null && result){
+//       setState(() {
+//         isLoading = true;
+//       });
+//       DataService.removePost(post).then((value) => {
+//         _apiLoadFeeds(),
+//       });
+//     }
 //   }
