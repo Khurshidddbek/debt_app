@@ -74,7 +74,8 @@ class _ContactsPageState extends State<ContactsPage> {
           builder: (ctx, model, index) => Stack(
             children: [
               // If the ContactList is empty
-              if (viewModel.contactsList == null)
+              if (viewModel.contactsList == null ||
+                  viewModel.contactsList!.isEmpty)
                 Center(
                   child: Text(
                     'Contact not available. Please add Contact.',

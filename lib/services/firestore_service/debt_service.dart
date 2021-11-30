@@ -11,6 +11,6 @@ class DebtService {
     print("storeDebt :user.uid = $uid");
     print("storeDebt :contact.data = ${debt.toString()}");
 
-    return collection.doc(uid).collection('takenDebt').add(debt.toJson());
+    return collection.doc(uid).collection('debtList').add(debt.toJson());
   }
 }

@@ -26,6 +26,8 @@ class AddDebtViewModel extends ChangeNotifier {
 
   bool isLoading = false;
 
+  bool gave = true;
+
   final List<String> hours = [
     for (int i = 60, j = 1; i <= 1410; i += 30, j++)
       (i ~/ 60).toString() + ':' + (j.isOdd ? '00' : '30')
@@ -107,6 +109,11 @@ class AddDebtViewModel extends ChangeNotifier {
     notifyListeners();
   }
 
+  selectTypeOfDebt(bool typeGave) {
+    gave = typeGave;
+    notifyListeners();
+  }
+
   doAddDebt(Contact contact) async {
     if (amount.text == "0.00" || amount.text.isEmpty) {
       Utils.fireToast("Enter Amount");
@@ -133,7 +140,8 @@ class AddDebtViewModel extends ChangeNotifier {
         month: selectedMonth.toString(),
         day: selectedDay.toString(),
         time: selectedHour,
-        note: noteTextEditingController.text));
+        note: noteTextEditingController.text,
+        gave: gave.toString()));
 
     isLoading = false;
     notifyListeners();

@@ -1,35 +1,37 @@
 import 'dart:convert';
 
 class Debt {
-    Debt({
-        required this.fullname,
-        required this.avatar,
-        required this.id,
-        required this.sum,
-        required this.valuta,
-        required this.year,
-        required this.month,
-        required this.day,
-        required this.time,
-        required this.note,
-    });
+  Debt({
+    required this.fullname,
+    required this.avatar,
+    required this.id,
+    required this.sum,
+    required this.valuta,
+    required this.year,
+    required this.month,
+    required this.day,
+    required this.time,
+    required this.note,
+    required this.gave,
+  });
 
-    String fullname;
-    String avatar;
-    String id;
-    String sum;
-    String valuta;
-    String year;
-    String month;
-    String day;
-    String time;
-    String note;
+  String fullname;
+  String avatar;
+  String id;
+  String sum;
+  String valuta;
+  String year;
+  String month;
+  String day;
+  String time;
+  String note;
+  String gave;
 
-    factory Debt.fromRawJson(String str) => Debt.fromJson(json.decode(str));
+  factory Debt.fromRawJson(String str) => Debt.fromJson(json.decode(str));
 
-    String toRawJson() => json.encode(toJson());
+  String toRawJson() => json.encode(toJson());
 
-    factory Debt.fromJson(Map<String, dynamic> json) => Debt(
+  factory Debt.fromJson(Map<String, dynamic> json) => Debt(
         fullname: json["fullname"],
         avatar: json["avatar"],
         id: json["id"],
@@ -40,9 +42,10 @@ class Debt {
         day: json["day"],
         time: json["time"],
         note: json["note"],
-    );
+        gave: json["gave"],
+      );
 
-    Map<String, dynamic> toJson() => {
+  Map<String, dynamic> toJson() => {
         "fullname": fullname,
         "avatar": avatar,
         "id": id,
@@ -53,5 +56,6 @@ class Debt {
         "day": day,
         "time": time,
         "note": note,
-    };
+        "gave": gave,
+      };
 }

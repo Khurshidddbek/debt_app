@@ -553,6 +553,99 @@ class _AddDebtPageState extends State<AddDebtPage> {
                           height: 30,
                         ),
 
+                        Container(
+                          width: double.infinity,
+                          padding: EdgeInsets.symmetric(horizontal: 50),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              // Text: I ... debt.
+                              FadeInUp(
+                                duration: Duration(milliseconds: 500),
+                                child: Text(
+                                  "I ... debt.",
+                                  style: TextStyle(
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.w600),
+                                ),
+                              ),
+
+                              SizedBox(
+                                height: 10,
+                              ),
+
+                              // Buttons
+                              Container(
+                                height: 50,
+                                child: Row(
+                                  children: [
+                                    // Button : gave
+                                    Expanded(
+                                      child: GestureDetector(
+                                        onTap: () =>
+                                            viewModel.selectTypeOfDebt(true),
+                                        child: Container(
+                                          padding: EdgeInsets.symmetric(
+                                              horizontal: 20),
+                                          decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(15),
+                                            color: viewModel.gave
+                                                ? Colors.blue.shade400
+                                                : Colors.grey.shade100,
+                                          ),
+                                          margin: EdgeInsets.only(right: 20),
+                                          child: Center(
+                                              child: Text(
+                                            "gave",
+                                            style: TextStyle(
+                                                fontSize: 18,
+                                                color: viewModel.gave
+                                                    ? Colors.white
+                                                    : Colors.grey.shade800),
+                                          )),
+                                        ),
+                                      ),
+                                    ),
+
+                                    // Button : got it
+                                    Expanded(
+                                      child: GestureDetector(
+                                        onTap: () =>
+                                            viewModel.selectTypeOfDebt(false),
+                                        child: Container(
+                                          padding: EdgeInsets.symmetric(
+                                              horizontal: 20),
+                                          decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(15),
+                                            color: !viewModel.gave
+                                                ? Colors.blue.shade400
+                                                : Colors.grey.shade100,
+                                          ),
+                                          child: Center(
+                                              child: Text(
+                                            "got it",
+                                            style: TextStyle(
+                                                fontSize: 18,
+                                                color: !viewModel.gave
+                                                    ? Colors.white
+                                                    : Colors.grey.shade800),
+                                          )),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+
+                        SizedBox(
+                          height: 30,
+                        ),
+
                         // Button : Save
                         FadeInUp(
                           duration: Duration(milliseconds: 500),
