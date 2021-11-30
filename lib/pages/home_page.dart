@@ -61,6 +61,8 @@ class _HomePageState extends State<HomePage> {
     viewModel.scrollController = ScrollController();
     viewModel.scrollController.addListener(_listenToScrollChange);
 
+    viewModel.loadDebtList();
+
     super.initState();
   }
 

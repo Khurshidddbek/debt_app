@@ -13,4 +13,17 @@ class DebtService {
 
     return collection.doc(uid).collection('debtList').add(debt.toJson());
   }
+
+  static Future<List<Debt>?> loadDebtList() async {
+    List<Debt> debtList = [];
+    String uid = await Prefs.loadUserId();
+
+    var querySnapshot = await collection.doc(uid).collection("debtList").get();
+
+    querySnapshot.docs.forEach((result) {
+      debtList.add(Debt.fromJson(result.data()));
+    });
+
+    return debtList;
+  }
 }

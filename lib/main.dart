@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:qarz_app/model/contact_model.dart';
 import 'package:qarz_app/pages/Authentication/registration_page.dart';
 import 'package:qarz_app/pages/add_debt_page.dart';
 import 'package:qarz_app/pages/contacts_page.dart';
@@ -33,7 +34,9 @@ class MyApp extends StatelessWidget {
         CreateContactPage.id: (context) => CreateContactPage(),
         SettingsPage.id: (context) => SettingsPage(),
         ContactsPage.id: (context) => ContactsPage(),
-        AddDebtPage.id: (context) => AddDebtPage(name: '', avatar: ''),
+        AddDebtPage.id: (context) => AddDebtPage(
+              contact: Contact(avatar: '', fullname: '', id: ''),
+            ),
       },
     );
   }

@@ -179,14 +179,8 @@ class _ContactsPageState extends State<ContactsPage> {
                                       context,
                                       MaterialPageRoute(
                                           builder: (context) => AddDebtPage(
-                                                name: viewModel
-                                                    .contactsList![index]
-                                                    .fullname,
-                                                avatar: userAvatars[int.parse(
-                                                    viewModel
-                                                        .contactsList![index]
-                                                        .avatar)],
-                                              )));
+                                              contact: viewModel
+                                                  .contactsList![index])));
                                 },
                                 child: Container(
                                   margin: EdgeInsets.only(right: 20),
@@ -252,12 +246,8 @@ class _ContactsPageState extends State<ContactsPage> {
                                       context,
                                       MaterialPageRoute(
                                           builder: (context) => AddDebtPage(
-                                              name: viewModel
-                                                  .contactsList![index]
-                                                  .fullname,
-                                              avatar: userAvatars[int.parse(
-                                                  viewModel.contactsList![index]
-                                                      .avatar)])));
+                                              contact: viewModel
+                                                  .contactsList![index])));
                                 },
                                 child: Container(
                                   margin: EdgeInsets.only(bottom: 20),
@@ -336,10 +326,8 @@ class _ContactsPageState extends State<ContactsPage> {
           Navigator.push(
               context,
               MaterialPageRoute(
-                  builder: (context) => AddDebtPage(
-                      name: viewModel.contactsList![index].fullname,
-                      avatar: userAvatars[
-                          int.parse(viewModel.contactsList![index].avatar)])));
+                  builder: (context) =>
+                      AddDebtPage(contact: viewModel.contactsList![index])));
         },
         child: Container(
           margin: EdgeInsets.only(right: 20),

@@ -4,16 +4,15 @@ import 'package:flutter/material.dart';
 import 'package:pattern_formatter/numeric_formatter.dart';
 import 'package:provider/provider.dart';
 import 'package:qarz_app/model/contact_model.dart';
+import 'package:qarz_app/values/user_avatars.dart';
 import 'package:qarz_app/viewmodel/add_debt_view_model.dart';
 import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
 
 class AddDebtPage extends StatefulWidget {
   static final String id = 'add_debt_page';
 
-  final String name;
-  final String avatar;
-  const AddDebtPage({Key? key, required this.name, required this.avatar})
-      : super(key: key);
+  final Contact contact;
+  const AddDebtPage({Key? key, required this.contact}) : super(key: key);
 
   @override
   _AddDebtPageState createState() => _AddDebtPageState();
@@ -89,7 +88,8 @@ class _AddDebtPageState extends State<AddDebtPage> {
                             ),
                             child: ClipRRect(
                                 borderRadius: BorderRadius.circular(50),
-                                child: Image.asset(widget.avatar)),
+                                child: Image.asset(userAvatars[
+                                    int.parse(widget.contact.avatar)])),
                           ),
                         ),
 
@@ -101,7 +101,7 @@ class _AddDebtPageState extends State<AddDebtPage> {
                         FadeInRight(
                             duration: Duration(milliseconds: 500),
                             child: Text(
-                              widget.name,
+                              widget.contact.fullname,
                               style: TextStyle(
                                   fontSize: 24, fontWeight: FontWeight.bold),
                             )),
@@ -658,8 +658,8 @@ class _AddDebtPageState extends State<AddDebtPage> {
                               color: Colors.black,
                               child: MaterialButton(
                                 onPressed: () => viewModel.doAddDebt(Contact(
-                                    fullname: widget.name,
-                                    avatar: widget.avatar,
+                                    fullname: widget.contact.fullname,
+                                    avatar: widget.contact.avatar,
                                     id: "Here is the contact id.")),
                                 minWidth: double.infinity,
                                 height: 50,
