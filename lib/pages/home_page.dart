@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_advanced_drawer/flutter_advanced_drawer.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:provider/provider.dart';
+import 'package:qarz_app/values/user_avatars.dart';
 import 'package:qarz_app/viewmodel/home_view_model.dart';
 
 import 'contacts_page.dart';
@@ -26,35 +27,35 @@ class _HomePageState extends State<HomePage> {
   //   ['Settings', Iconsax.setting_2, Colors.green],
   // ];
 
-  List<dynamic> _transactions = [
-    ['Javoxir', 'assets/images/user_avatars/avatar-1.png', '21.11', '\$8.90'],
-    [
-      'Bozorchi opa',
-      'assets/images/user_avatars/avatar-2.png',
-      '13.11',
-      '\$18.90'
-    ],
-    [
-      'Sut-qatiq',
-      'assets/images/user_avatars/avatar-3.png',
-      '08.12',
-      '\$20.00'
-    ],
-    [
-      'Abdurasul',
-      'assets/images/user_avatars/avatar-4.png',
-      '21.12',
-      '\$50.00'
-    ],
-    [
-      'Salonchi Nargiz',
-      'assets/images/user_avatars/avatar-5.png',
-      '21.12',
-      '\$100.00'
-    ],
-    ['Anvar', 'assets/images/user_avatars/avatar-6.png', '23.12', '\$8.90'],
-    ['Botir', 'assets/images/user_avatars/avatar-1.png', '28.12', '\$4.90'],
-  ];
+  // List<dynamic> _transactions = [
+  //   ['Javoxir', 'assets/images/user_avatars/avatar-1.png', '21.11', '\$8.90'],
+  //   [
+  //     'Bozorchi opa',
+  //     'assets/images/user_avatars/avatar-2.png',
+  //     '13.11',
+  //     '\$18.90'
+  //   ],
+  //   [
+  //     'Sut-qatiq',
+  //     'assets/images/user_avatars/avatar-3.png',
+  //     '08.12',
+  //     '\$20.00'
+  //   ],
+  //   [
+  //     'Abdurasul',
+  //     'assets/images/user_avatars/avatar-4.png',
+  //     '21.12',
+  //     '\$50.00'
+  //   ],
+  //   [
+  //     'Salonchi Nargiz',
+  //     'assets/images/user_avatars/avatar-5.png',
+  //     '21.12',
+  //     '\$100.00'
+  //   ],
+  //   ['Anvar', 'assets/images/user_avatars/avatar-6.png', '23.12', '\$8.90'],
+  //   ['Botir', 'assets/images/user_avatars/avatar-1.png', '28.12', '\$4.90'],
+  // ];
 
   @override
   void initState() {
@@ -206,343 +207,409 @@ class _HomePageState extends State<HomePage> {
           // Home Page
           child: Scaffold(
               backgroundColor: Colors.grey.shade100,
-              body: CustomScrollView(
-                  controller: viewModel.scrollController,
-                  slivers: [
-                    SliverAppBar(
-                      expandedHeight: 250.0,
-                      elevation: 0,
-                      pinned: true,
-                      stretch: true,
-                      toolbarHeight: 80,
-                      backgroundColor: Colors.white,
-                      leading: IconButton(
-                        color: Colors.black,
-                        onPressed: _handleMenuButtonPressed,
-                        icon: ValueListenableBuilder<AdvancedDrawerValue>(
-                          valueListenable: _advancedDrawerController,
-                          builder: (_, value, __) {
-                            return AnimatedSwitcher(
-                              duration: Duration(milliseconds: 250),
-                              child: Icon(
-                                value.visible
-                                    ? Iconsax.close_square
-                                    : Iconsax.menu,
-                                key: ValueKey<bool>(value.visible),
-                              ),
-                            );
-                          },
-                        ),
-                      ),
-                      actions: [
-                        // Button : Notification
-                        IconButton(
-                          icon: Icon(Iconsax.notification,
-                              color: Colors.grey.shade700),
-                          onPressed: () {},
-                        ),
-                        // // Button : More
-                        // IconButton(
-                        //   icon: Icon(Iconsax.more, color: Colors.grey.shade700),
-                        //   onPressed: () {},
-                        // ),
-                      ],
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.only(
-                          bottomLeft: Radius.circular(40),
-                          bottomRight: Radius.circular(40),
-                        ),
-                      ),
-                      centerTitle: true,
-                      title: AnimatedOpacity(
-                        opacity: viewModel.isScrolled ? 1.0 : 0.0,
-                        duration: const Duration(milliseconds: 500),
-                        child: Column(
-                          children: [
-                            Text(
-                              '\$ 1,840.00',
-                              style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 22,
-                                fontWeight: FontWeight.bold,
-                              ),
+              body: Stack(
+                children: [
+                  // UI
+                  CustomScrollView(
+                      controller: viewModel.scrollController,
+                      slivers: [
+                        // AppBar
+                        SliverAppBar(
+                          expandedHeight: 250.0,
+                          elevation: 0,
+                          pinned: true,
+                          stretch: true,
+                          toolbarHeight: 80,
+                          backgroundColor: Colors.white,
+                          leading: IconButton(
+                            color: Colors.black,
+                            onPressed: _handleMenuButtonPressed,
+                            icon: ValueListenableBuilder<AdvancedDrawerValue>(
+                              valueListenable: _advancedDrawerController,
+                              builder: (_, value, __) {
+                                return AnimatedSwitcher(
+                                  duration: Duration(milliseconds: 250),
+                                  child: Icon(
+                                    value.visible
+                                        ? Iconsax.close_square
+                                        : Iconsax.menu,
+                                    key: ValueKey<bool>(value.visible),
+                                  ),
+                                );
+                              },
                             ),
-                            SizedBox(
-                              height: 20,
+                          ),
+                          actions: [
+                            // Button : Notification
+                            IconButton(
+                              icon: Icon(Iconsax.notification,
+                                  color: Colors.grey.shade700),
+                              onPressed: () {},
                             ),
-                            Container(
-                              width: 30,
-                              height: 4,
-                              decoration: BoxDecoration(
-                                color: Colors.grey.shade800,
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                            ),
+                            // // Button : More
+                            // IconButton(
+                            //   icon: Icon(Iconsax.more, color: Colors.grey.shade700),
+                            //   onPressed: () {},
+                            // ),
                           ],
-                        ),
-                      ),
-                      flexibleSpace: FlexibleSpaceBar(
-                        collapseMode: CollapseMode.pin,
-                        titlePadding:
-                            const EdgeInsets.only(left: 20, right: 20),
-                        title: AnimatedOpacity(
-                          duration: const Duration(milliseconds: 500),
-                          opacity: viewModel.isScrolled ? 0.0 : 1.0,
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            children: [
-                              FadeIn(
-                                duration: const Duration(milliseconds: 500),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      '\$',
-                                      style: TextStyle(
-                                          color: Colors.grey.shade800,
-                                          fontSize: 22),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.only(
+                              bottomLeft: Radius.circular(40),
+                              bottomRight: Radius.circular(40),
+                            ),
+                          ),
+                          centerTitle: true,
+                          title: AnimatedOpacity(
+                            opacity: viewModel.isScrolled ? 1.0 : 0.0,
+                            duration: const Duration(milliseconds: 500),
+                            child: Column(
+                              children: [
+                                Text(
+                                  '\$ 1,840.00',
+                                  style: TextStyle(
+                                    color: Colors.black,
+                                    fontSize: 22,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                SizedBox(
+                                  height: 20,
+                                ),
+                                Container(
+                                  width: 30,
+                                  height: 4,
+                                  decoration: BoxDecoration(
+                                    color: Colors.grey.shade800,
+                                    borderRadius: BorderRadius.circular(10),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          flexibleSpace: FlexibleSpaceBar(
+                            collapseMode: CollapseMode.pin,
+                            titlePadding:
+                                const EdgeInsets.only(left: 20, right: 20),
+                            title: AnimatedOpacity(
+                              duration: const Duration(milliseconds: 500),
+                              opacity: viewModel.isScrolled ? 0.0 : 1.0,
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.end,
+                                children: [
+                                  FadeIn(
+                                    duration: const Duration(milliseconds: 500),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          '\$',
+                                          style: TextStyle(
+                                              color: Colors.grey.shade800,
+                                              fontSize: 22),
+                                        ),
+                                        SizedBox(
+                                          width: 3,
+                                        ),
+                                        Text(
+                                          '1,840.00',
+                                          style: TextStyle(
+                                            fontSize: 28,
+                                            fontWeight: FontWeight.bold,
+                                            color: Colors.black,
+                                          ),
+                                        ),
+                                      ],
                                     ),
-                                    SizedBox(
-                                      width: 3,
-                                    ),
-                                    Text(
-                                      '1,840.00',
-                                      style: TextStyle(
-                                        fontSize: 28,
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.black,
+                                  ),
+                                  SizedBox(
+                                    height: 10,
+                                  ),
+                                  FadeIn(
+                                    duration: const Duration(milliseconds: 500),
+
+                                    // Button : Add Debt
+                                    child: MaterialButton(
+                                      height: 30,
+                                      padding: EdgeInsets.symmetric(
+                                          horizontal: 20, vertical: 0),
+                                      onPressed: () {
+                                        Navigator.pushNamed(
+                                            context, ContactsPage.id);
+                                      },
+                                      child: Text(
+                                        "Qarz qo'shish",
+                                        style: TextStyle(
+                                            color: Colors.black, fontSize: 10),
+                                      ),
+                                      color: Colors.transparent,
+                                      elevation: 0,
+                                      shape: RoundedRectangleBorder(
+                                        side: BorderSide(
+                                            color: Colors.grey.shade300,
+                                            width: 1),
+                                        borderRadius: BorderRadius.circular(30),
                                       ),
                                     ),
-                                  ],
-                                ),
-                              ),
-                              SizedBox(
-                                height: 10,
-                              ),
-                              FadeIn(
-                                duration: const Duration(milliseconds: 500),
-
-                                // Button : Add Debt
-                                child: MaterialButton(
-                                  height: 30,
-                                  padding: EdgeInsets.symmetric(
-                                      horizontal: 20, vertical: 0),
-                                  onPressed: () {
-                                    Navigator.pushNamed(
-                                        context, ContactsPage.id);
-                                  },
-                                  child: Text(
-                                    "Qarz qo'shish",
-                                    style: TextStyle(
-                                        color: Colors.black, fontSize: 10),
                                   ),
-                                  color: Colors.transparent,
-                                  elevation: 0,
-                                  shape: RoundedRectangleBorder(
-                                    side: BorderSide(
-                                        color: Colors.grey.shade300, width: 1),
-                                    borderRadius: BorderRadius.circular(30),
+                                  SizedBox(
+                                    height: 10,
                                   ),
-                                ),
+                                  Container(
+                                    width: 30,
+                                    height: 3,
+                                    decoration: BoxDecoration(
+                                      color: Colors.grey.shade800,
+                                      borderRadius: BorderRadius.circular(10),
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    height: 8,
+                                  ),
+                                ],
                               ),
-                              SizedBox(
-                                height: 10,
-                              ),
-                              Container(
-                                width: 30,
-                                height: 3,
-                                decoration: BoxDecoration(
-                                  color: Colors.grey.shade800,
-                                  borderRadius: BorderRadius.circular(10),
-                                ),
-                              ),
-                              SizedBox(
-                                height: 8,
-                              ),
-                            ],
+                            ),
                           ),
                         ),
-                      ),
-                    ),
 
-                    // // Buttons
-                    // SliverList(
-                    //     delegate: SliverChildListDelegate([
-                    //   SizedBox(
-                    //     height: 20,
-                    //   ),
+                        // // Buttons
+                        // SliverList(
+                        //     delegate: SliverChildListDelegate([
+                        //   SizedBox(
+                        //     height: 20,
+                        //   ),
 
-                    //   Container(
-                    //     padding: EdgeInsets.only(top: 20),
-                    //     height: 115,
-                    //     width: double.infinity,
-                    //     child: ListView.builder(
-                    //       scrollDirection: Axis.horizontal,
-                    //       itemCount: _services.length,
-                    //       itemBuilder: (context, index) {
-                    //         return FadeInDown(
-                    //           duration: Duration(milliseconds: (index + 1) * 100),
-                    //           child: AspectRatio(
-                    //             aspectRatio: 1,
-                    //             child: GestureDetector(
-                    //               onTap: () {
-                    //                 if (_services[index][0] == 'Transfer') {
-                    //                   // Navigator.push(context, MaterialPageRoute(builder: (context) => ContactPage()));
-                    //                 }
-                    //               },
-                    //               child: Column(
-                    //                 children: [
-                    //                   // Icon
-                    //                   Container(
-                    //                     width: 60,
-                    //                     height: 60,
-                    //                     decoration: BoxDecoration(
-                    //                       color: Colors.grey.shade900,
-                    //                       borderRadius: BorderRadius.circular(20),
-                    //                     ),
-                    //                     child: Center(
-                    //                       child: Icon(
-                    //                         _services[index][1],
-                    //                         color: Colors.white,
-                    //                         size: 25,
-                    //                       ),
-                    //                     ),
-                    //                   ),
+                        //   Container(
+                        //     padding: EdgeInsets.only(top: 20),
+                        //     height: 115,
+                        //     width: double.infinity,
+                        //     child: ListView.builder(
+                        //       scrollDirection: Axis.horizontal,
+                        //       itemCount: _services.length,
+                        //       itemBuilder: (context, index) {
+                        //         return FadeInDown(
+                        //           duration: Duration(milliseconds: (index + 1) * 100),
+                        //           child: AspectRatio(
+                        //             aspectRatio: 1,
+                        //             child: GestureDetector(
+                        //               onTap: () {
+                        //                 if (_services[index][0] == 'Transfer') {
+                        //                   // Navigator.push(context, MaterialPageRoute(builder: (context) => ContactPage()));
+                        //                 }
+                        //               },
+                        //               child: Column(
+                        //                 children: [
+                        //                   // Icon
+                        //                   Container(
+                        //                     width: 60,
+                        //                     height: 60,
+                        //                     decoration: BoxDecoration(
+                        //                       color: Colors.grey.shade900,
+                        //                       borderRadius: BorderRadius.circular(20),
+                        //                     ),
+                        //                     child: Center(
+                        //                       child: Icon(
+                        //                         _services[index][1],
+                        //                         color: Colors.white,
+                        //                         size: 25,
+                        //                       ),
+                        //                     ),
+                        //                   ),
 
-                    //                   SizedBox(
-                    //                     height: 10,
-                    //                   ),
+                        //                   SizedBox(
+                        //                     height: 10,
+                        //                   ),
 
-                    //                   Text(
-                    //                     _services[index][0],
-                    //                     style: TextStyle(
-                    //                         color: Colors.grey.shade800, fontSize: 12),
-                    //                   ),
-                    //                 ],
-                    //               ),
-                    //             ),
-                    //           ),
-                    //         );
-                    //       },
-                    //     ),
-                    //   ),
-                    // ])),
+                        //                   Text(
+                        //                     _services[index][0],
+                        //                     style: TextStyle(
+                        //                         color: Colors.grey.shade800, fontSize: 12),
+                        //                   ),
+                        //                 ],
+                        //               ),
+                        //             ),
+                        //           ),
+                        //         );
+                        //       },
+                        //     ),
+                        //   ),
+                        // ])),
 
-                    // List
-                    SliverFillRemaining(
-                      child: Container(
-                        padding: EdgeInsets.only(left: 20, right: 20, top: 30),
-                        child: Column(
-                          children: [
-                            FadeInDown(
-                              duration: Duration(milliseconds: 500),
-                              child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text(
-                                      'Qarzingiz : ',
+                        // DebtList
+                        SliverFillRemaining(
+                          child: Container(
+                            padding:
+                                EdgeInsets.only(left: 20, right: 20, top: 30),
+                            child: Stack(
+                              children: [
+                                // If the debtList is empty
+                                if (viewModel.debtList == null ||
+                                    viewModel.debtList!.isEmpty)
+                                  Center(
+                                    child: Text(
+                                      'Debts not available. Please add Debt.',
                                       style: TextStyle(
-                                          color: Colors.grey.shade800,
-                                          fontSize: 14,
-                                          fontWeight: FontWeight.w600),
-                                    ),
-                                    SizedBox(
-                                      width: 10,
-                                    ),
-                                    Text('\$ 1,840.00',
-                                        style: TextStyle(
-                                          color: Colors.black,
-                                          fontSize: 16,
-                                          fontWeight: FontWeight.w700,
-                                        )),
-                                  ]),
-                            ),
-                            Expanded(
-                              child: ListView.builder(
-                                padding: EdgeInsets.only(top: 20),
-                                physics: NeverScrollableScrollPhysics(),
-                                itemCount: _transactions.length,
-                                itemBuilder: (context, index) {
-                                  return FadeInDown(
-                                    duration: Duration(milliseconds: 500),
-                                    child: Container(
-                                      margin: EdgeInsets.only(bottom: 10),
-                                      padding: EdgeInsets.symmetric(
-                                          horizontal: 20, vertical: 10),
-                                      decoration: BoxDecoration(
-                                        color: Colors.white,
-                                        borderRadius: BorderRadius.circular(15),
-                                        boxShadow: [
-                                          BoxShadow(
-                                            color: Colors.grey.shade200,
-                                            blurRadius: 5,
-                                            spreadRadius: 1,
-                                            offset: Offset(0, 6),
-                                          ),
-                                        ],
+                                        color: Colors.grey.shade700,
                                       ),
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Row(
+                                      textAlign: TextAlign.center,
+                                    ),
+                                  )
+                                else
+                                  // DebtList
+                                  Column(
+                                    children: [
+                                      FadeInDown(
+                                        duration: Duration(milliseconds: 500),
+                                        child: Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
                                             children: [
-                                              Image.asset(
-                                                _transactions[index][1],
-                                                height: 50,
-                                                width: 50,
+                                              Text(
+                                                'Qarzingiz : ',
+                                                style: TextStyle(
+                                                    color: Colors.grey.shade800,
+                                                    fontSize: 14,
+                                                    fontWeight:
+                                                        FontWeight.w600),
                                               ),
                                               SizedBox(
-                                                width: 15,
+                                                width: 10,
                                               ),
-                                              Column(
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
-                                                children: [
-                                                  Text(
-                                                    _transactions[index][0],
-                                                    style: TextStyle(
-                                                        color: Colors
-                                                            .grey.shade900,
-                                                        fontWeight:
-                                                            FontWeight.w500,
-                                                        fontSize: 14),
-                                                  ),
-                                                  SizedBox(
-                                                    height: 5,
-                                                  ),
-                                                  Text(
-                                                    _transactions[index][2],
-                                                    style: TextStyle(
-                                                        color: Colors
-                                                            .grey.shade500,
-                                                        fontSize: 12),
-                                                  ),
-                                                ],
-                                              ),
-                                            ],
-                                          ),
-                                          Text(
-                                            _transactions[index][3],
-                                            style: TextStyle(
-                                                color: Colors.grey.shade800,
-                                                fontSize: 16,
-                                                fontWeight: FontWeight.w700),
-                                          ),
-                                        ],
+                                              Text('\$ 1,840.00',
+                                                  style: TextStyle(
+                                                    color: Colors.black,
+                                                    fontSize: 16,
+                                                    fontWeight: FontWeight.w700,
+                                                  )),
+                                            ]),
                                       ),
-                                    ),
-                                  );
-                                },
-                              ),
-                            )
-                          ],
-                        ),
-                      ),
-                    )
-                  ])),
+                                      Expanded(
+                                        child: ListView.builder(
+                                          padding: EdgeInsets.only(top: 20),
+                                          physics:
+                                              NeverScrollableScrollPhysics(),
+                                          itemCount: viewModel.debtList!.length,
+                                          itemBuilder: (context, index) {
+                                            return FadeInDown(
+                                              duration:
+                                                  Duration(milliseconds: 500),
+                                              child: Container(
+                                                margin:
+                                                    EdgeInsets.only(bottom: 10),
+                                                padding: EdgeInsets.symmetric(
+                                                    horizontal: 20,
+                                                    vertical: 10),
+                                                decoration: BoxDecoration(
+                                                  color: Colors.white,
+                                                  borderRadius:
+                                                      BorderRadius.circular(15),
+                                                  boxShadow: [
+                                                    BoxShadow(
+                                                      color:
+                                                          Colors.grey.shade200,
+                                                      blurRadius: 5,
+                                                      spreadRadius: 1,
+                                                      offset: Offset(0, 6),
+                                                    ),
+                                                  ],
+                                                ),
+                                                child: Row(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment
+                                                          .spaceBetween,
+                                                  children: [
+                                                    Row(
+                                                      children: [
+                                                        // Avatar
+                                                        Image.asset(
+                                                          userAvatars[int.parse(
+                                                              viewModel
+                                                                  .debtList![
+                                                                      index]
+                                                                  .avatar)],
+                                                          height: 50,
+                                                          width: 50,
+                                                        ),
+                                                        SizedBox(
+                                                          width: 15,
+                                                        ),
+                                                        Column(
+                                                          crossAxisAlignment:
+                                                              CrossAxisAlignment
+                                                                  .start,
+                                                          children: [
+                                                            // Fullname
+                                                            Text(
+                                                              viewModel
+                                                                  .debtList![
+                                                                      index]
+                                                                  .fullname,
+                                                              style: TextStyle(
+                                                                  color: Colors
+                                                                      .grey
+                                                                      .shade900,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w500,
+                                                                  fontSize: 14),
+                                                            ),
+                                                            SizedBox(
+                                                              height: 5,
+                                                            ),
+
+                                                            // DateTime
+                                                            Text(
+                                                              viewModel
+                                                                      .debtList![
+                                                                          index]
+                                                                      .day +
+                                                                  '.' +
+                                                                  viewModel
+                                                                      .debtList![
+                                                                          index]
+                                                                      .month,
+                                                              style: TextStyle(
+                                                                  color: Colors
+                                                                      .grey
+                                                                      .shade500,
+                                                                  fontSize: 12),
+                                                            ),
+                                                          ],
+                                                        ),
+                                                      ],
+                                                    ),
+
+                                                    // Sum debt
+                                                    Text(
+                                                      '\$' +
+                                                          viewModel
+                                                              .debtList![index]
+                                                              .sum,
+                                                      style: TextStyle(
+                                                          color: Colors
+                                                              .grey.shade800,
+                                                          fontSize: 16,
+                                                          fontWeight:
+                                                              FontWeight.w700),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                            );
+                                          },
+                                        ),
+                                      )
+                                    ],
+                                  ),
+                              ],
+                            ),
+                          ),
+                        )
+                      ]),
+                ],
+              )),
         ),
       ),
     );

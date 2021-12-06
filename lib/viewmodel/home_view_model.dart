@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:qarz_app/model/debt_model.dart';
 import 'package:qarz_app/services/firestore_service/debt_service.dart';
 
 class HomeViewModel extends ChangeNotifier {
@@ -8,7 +9,7 @@ class HomeViewModel extends ChangeNotifier {
 
   bool isLoading = false;
 
-  List<dynamic>? debtList = [];
+  List<Debt>? debtList;
 
   loadDebtList() {
     print('LOAD DEBT LIST');
@@ -17,7 +18,7 @@ class HomeViewModel extends ChangeNotifier {
 
     DebtService.loadDebtList().then((value) {
       print('LOAD DEBT LIST VALUE : $value');
-      debtList = value!;
+      debtList = value;
       notifyListeners();
     });
 
