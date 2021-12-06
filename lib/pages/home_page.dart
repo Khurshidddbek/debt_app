@@ -588,8 +588,14 @@ class _HomePageState extends State<HomePage> {
                                                               .debtList![index]
                                                               .sum,
                                                       style: TextStyle(
-                                                          color: Colors
-                                                              .grey.shade800,
+                                                          color: viewModel
+                                                                      .debtList![
+                                                                          index]
+                                                                      .gave ==
+                                                                  'false'
+                                                              ? Colors
+                                                                  .grey.shade800
+                                                              : Colors.green,
                                                           fontSize: 16,
                                                           fontWeight:
                                                               FontWeight.w700),
