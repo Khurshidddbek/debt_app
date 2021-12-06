@@ -564,12 +564,18 @@ class _HomePageState extends State<HomePage> {
                                                               viewModel
                                                                       .debtList![
                                                                           index]
-                                                                      .day +
+                                                                      .datetime
+                                                                      .substring(
+                                                                          5,
+                                                                          7) +
                                                                   '.' +
                                                                   viewModel
                                                                       .debtList![
                                                                           index]
-                                                                      .month,
+                                                                      .datetime
+                                                                      .substring(
+                                                                          8,
+                                                                          10),
                                                               style: TextStyle(
                                                                   color: Colors
                                                                       .grey

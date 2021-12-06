@@ -7,10 +7,7 @@ class Debt {
     required this.id,
     required this.sum,
     required this.valuta,
-    required this.year,
-    required this.month,
-    required this.day,
-    required this.time,
+    required this.datetime,
     required this.note,
     required this.gave,
   });
@@ -20,10 +17,7 @@ class Debt {
   String id;
   String sum;
   String valuta;
-  String year;
-  String month;
-  String day;
-  String time;
+  String datetime;
   String note;
   String gave;
 
@@ -37,10 +31,7 @@ class Debt {
         id: json["id"],
         sum: json["sum"],
         valuta: json["valuta"],
-        year: json["year"],
-        month: json["month"],
-        day: json["day"],
-        time: json["time"],
+        datetime: json["datetime"],
         note: json["note"],
         gave: json["gave"],
       );
@@ -51,10 +42,7 @@ class Debt {
         "id": id,
         "sum": sum,
         "valuta": valuta,
-        "year": year,
-        "month": month,
-        "day": day,
-        "time": time,
+        "datetime": datetime,
         "note": note,
         "gave": gave,
       };

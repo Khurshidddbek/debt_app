@@ -136,10 +136,13 @@ class AddDebtViewModel extends ChangeNotifier {
         id: contact.id,
         sum: amount.text,
         valuta: 'usd',
-        year: selectedYear.toString(),
-        month: selectedMonth.toString(),
-        day: selectedDay.toString(),
-        time: selectedHour,
+        datetime: DateTime(
+                selectedYear,
+                selectedMonth,
+                selectedDay,
+                int.parse(selectedHour.substring(0, 2)),
+                int.parse(selectedHour.substring(3, 5)))
+            .toString(),
         note: noteTextEditingController.text,
         gave: gave.toString()));
 
