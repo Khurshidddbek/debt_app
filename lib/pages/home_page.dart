@@ -5,6 +5,7 @@ import 'package:iconsax/iconsax.dart';
 import 'package:provider/provider.dart';
 import 'package:qarz_app/values/user_avatars.dart';
 import 'package:qarz_app/viewmodel/home_view_model.dart';
+import 'package:qarz_app/views/home_page_views.dart';
 
 import 'contacts_page.dart';
 
@@ -19,43 +20,6 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   var viewModel = HomeViewModel();
-
-  // List<dynamic> _services = [
-  //   ['Contacts', Iconsax.profile_2user, Colors.blue],
-  //   ['Olingan qarz', Iconsax.import, Colors.pink],
-  //   ['History', Iconsax.wallet_3, Colors.orange],
-  //   ['Settings', Iconsax.setting_2, Colors.green],
-  // ];
-
-  // List<dynamic> _transactions = [
-  //   ['Javoxir', 'assets/images/user_avatars/avatar-1.png', '21.11', '\$8.90'],
-  //   [
-  //     'Bozorchi opa',
-  //     'assets/images/user_avatars/avatar-2.png',
-  //     '13.11',
-  //     '\$18.90'
-  //   ],
-  //   [
-  //     'Sut-qatiq',
-  //     'assets/images/user_avatars/avatar-3.png',
-  //     '08.12',
-  //     '\$20.00'
-  //   ],
-  //   [
-  //     'Abdurasul',
-  //     'assets/images/user_avatars/avatar-4.png',
-  //     '21.12',
-  //     '\$50.00'
-  //   ],
-  //   [
-  //     'Salonchi Nargiz',
-  //     'assets/images/user_avatars/avatar-5.png',
-  //     '21.12',
-  //     '\$100.00'
-  //   ],
-  //   ['Anvar', 'assets/images/user_avatars/avatar-6.png', '23.12', '\$8.90'],
-  //   ['Botir', 'assets/images/user_avatars/avatar-1.png', '28.12', '\$4.90'],
-  // ];
 
   @override
   void initState() {
@@ -440,8 +404,7 @@ class _HomePageState extends State<HomePage> {
                         // DebtList
                         SliverFillRemaining(
                           child: Container(
-                            padding:
-                                EdgeInsets.only(left: 20, right: 20, top: 30),
+                            padding: EdgeInsets.only(left: 20, right: 20),
                             child: Stack(
                               children: [
                                 // If the debtList is empty
@@ -458,163 +421,10 @@ class _HomePageState extends State<HomePage> {
                                   )
                                 else
                                   // DebtList
-                                  Column(
-                                    children: [
-                                      FadeInDown(
-                                        duration: Duration(milliseconds: 500),
-                                        child: Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceBetween,
-                                            children: [
-                                              Text(
-                                                'Qarzingiz : ',
-                                                style: TextStyle(
-                                                    color: Colors.grey.shade800,
-                                                    fontSize: 14,
-                                                    fontWeight:
-                                                        FontWeight.w600),
-                                              ),
-                                              SizedBox(
-                                                width: 10,
-                                              ),
-                                              Text('\$ 1,840.00',
-                                                  style: TextStyle(
-                                                    color: Colors.black,
-                                                    fontSize: 16,
-                                                    fontWeight: FontWeight.w700,
-                                                  )),
-                                            ]),
-                                      ),
-                                      Expanded(
-                                        child: ListView.builder(
-                                          padding: EdgeInsets.only(top: 20),
-                                          physics:
-                                              NeverScrollableScrollPhysics(),
-                                          itemCount: viewModel.debtList!.length,
-                                          itemBuilder: (context, index) {
-                                            return FadeInDown(
-                                              duration:
-                                                  Duration(milliseconds: 500),
-                                              child: Container(
-                                                margin:
-                                                    EdgeInsets.only(bottom: 10),
-                                                padding: EdgeInsets.symmetric(
-                                                    horizontal: 20,
-                                                    vertical: 10),
-                                                decoration: BoxDecoration(
-                                                  color: Colors.white,
-                                                  borderRadius:
-                                                      BorderRadius.circular(15),
-                                                  boxShadow: [
-                                                    BoxShadow(
-                                                      color:
-                                                          Colors.grey.shade200,
-                                                      blurRadius: 5,
-                                                      spreadRadius: 1,
-                                                      offset: Offset(0, 6),
-                                                    ),
-                                                  ],
-                                                ),
-                                                child: Row(
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment
-                                                          .spaceBetween,
-                                                  children: [
-                                                    Row(
-                                                      children: [
-                                                        // Avatar
-                                                        Image.asset(
-                                                          userAvatars[int.parse(
-                                                              viewModel
-                                                                  .debtList![
-                                                                      index]
-                                                                  .avatar)],
-                                                          height: 50,
-                                                          width: 50,
-                                                        ),
-                                                        SizedBox(
-                                                          width: 15,
-                                                        ),
-                                                        Column(
-                                                          crossAxisAlignment:
-                                                              CrossAxisAlignment
-                                                                  .start,
-                                                          children: [
-                                                            // Fullname
-                                                            Text(
-                                                              viewModel
-                                                                  .debtList![
-                                                                      index]
-                                                                  .fullname,
-                                                              style: TextStyle(
-                                                                  color: Colors
-                                                                      .grey
-                                                                      .shade900,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .w500,
-                                                                  fontSize: 14),
-                                                            ),
-                                                            SizedBox(
-                                                              height: 5,
-                                                            ),
-
-                                                            // DateTime
-                                                            Text(
-                                                              viewModel
-                                                                      .debtList![
-                                                                          index]
-                                                                      .datetime
-                                                                      .substring(
-                                                                          5,
-                                                                          7) +
-                                                                  '.' +
-                                                                  viewModel
-                                                                      .debtList![
-                                                                          index]
-                                                                      .datetime
-                                                                      .substring(
-                                                                          8,
-                                                                          10),
-                                                              style: TextStyle(
-                                                                  color: Colors
-                                                                      .grey
-                                                                      .shade500,
-                                                                  fontSize: 12),
-                                                            ),
-                                                          ],
-                                                        ),
-                                                      ],
-                                                    ),
-
-                                                    // Sum debt
-                                                    Text(
-                                                      '\$' +
-                                                          viewModel
-                                                              .debtList![index]
-                                                              .sum,
-                                                      style: TextStyle(
-                                                          color: viewModel
-                                                                      .debtList![
-                                                                          index]
-                                                                      .gave ==
-                                                                  'false'
-                                                              ? Colors
-                                                                  .grey.shade800
-                                                              : Colors.green,
-                                                          fontSize: 16,
-                                                          fontWeight:
-                                                              FontWeight.w700),
-                                                    ),
-                                                  ],
-                                                ),
-                                              ),
-                                            );
-                                          },
-                                        ),
-                                      )
-                                    ],
-                                  ),
+                                  FadeInDown(
+                                      duration: Duration(milliseconds: 500),
+                                      child:
+                                          DebtListViews(viewModel.debtList!)),
                               ],
                             ),
                           ),
