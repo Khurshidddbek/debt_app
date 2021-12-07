@@ -46,6 +46,10 @@ class _ContactsPageState extends State<ContactsPage> {
               margin: EdgeInsets.only(bottom: 10),
               padding: EdgeInsets.symmetric(horizontal: 20),
               child: TextField(
+                controller: viewModel.searchController,
+                onChanged: (input) {
+                  viewModel.searchContacs(input);
+                },
                 cursorColor: Colors.black,
                 decoration: InputDecoration(
                   contentPadding: EdgeInsets.symmetric(vertical: 10),
