@@ -1,23 +1,25 @@
+import 'package:align_positioned/align_positioned.dart';
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:qarz_app/values/user_avatars.dart';
-import 'package:qarz_app/viewmodel/contacts_view_model.dart';
+import 'package:qarz_app/viewmodel/select_contact_view_model.dart';
+
 import 'add_debt_page.dart';
 import 'create_contact_page.dart';
 
-class ContactsPage extends StatefulWidget {
-  static final String id = 'edit_contacts_list_page';
+class SelectContactPage extends StatefulWidget {
+  static final String id = 'select_contact_page';
 
-  const ContactsPage({Key? key}) : super(key: key);
+  const SelectContactPage({Key? key}) : super(key: key);
 
   @override
-  _ContactsPageState createState() => _ContactsPageState();
+  _SelectContactPageState createState() => _SelectContactPageState();
 }
 
-class _ContactsPageState extends State<ContactsPage> {
-  var viewModel = ContactsViewModel();
+class _SelectContactPageState extends State<SelectContactPage> {
+  var viewModel = SelectContactViewModel();
 
   @override
   void initState() {
@@ -31,7 +33,7 @@ class _ContactsPageState extends State<ContactsPage> {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
-        title: Text('Contacts', style: TextStyle(color: Colors.black)),
+        title: Text('Select Contact', style: TextStyle(color: Colors.black)),
         leading: BackButton(
           color: Colors.black,
         ),
@@ -68,7 +70,7 @@ class _ContactsPageState extends State<ContactsPage> {
       ),
       body: ChangeNotifierProvider(
         create: (context) => viewModel,
-        child: Consumer<ContactsViewModel>(
+        child: Consumer<SelectContactViewModel>(
           builder: (ctx, model, index) => Stack(
             children: [
               // If the ContactList is empty
@@ -89,6 +91,61 @@ class _ContactsPageState extends State<ContactsPage> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
+                      // Users : Circle Animations
+                      if (viewModel.contactsList!.length > 5)
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            SizedBox(height: 50),
+
+                            // Users : Circle Animations
+                            FadeInUp(
+                              duration: Duration(milliseconds: 500),
+                              child: Container(
+                                width: double.infinity,
+                                height: 300,
+                                padding: EdgeInsets.all(90),
+                                decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  border: Border.all(
+                                      color: Colors.grey.shade200, width: 1),
+                                ),
+                                child: Stack(
+                                  children: [
+                                    for (double i = 0; i < 360; i += 60)
+                                      AnimChain(
+                                              initialDelay: Duration(
+                                                  milliseconds: i.toInt()))
+                                          .next(
+                                            wait: Duration(milliseconds: 1000),
+                                            widget: AnimatedAlignPositioned(
+                                              dx: 0,
+                                              dy: 150,
+                                              duration: Duration(seconds: 1),
+                                              rotateDegrees: 0,
+                                              touch: Touch.middle,
+                                              child: user(0, i),
+                                            ),
+                                          )
+                                          .next(
+                                              wait: Duration(seconds: 2),
+                                              widget: AnimatedAlignPositioned(
+                                                dx: i / 360,
+                                                dy: 150,
+                                                duration: Duration(seconds: 1),
+                                                rotateDegrees: i,
+                                                touch: Touch.middle,
+                                                child: user(0, i),
+                                              ))
+                                  ],
+                                ),
+                              ),
+                            ),
+
+                            SizedBox(height: 80),
+                          ],
+                        ),
+
                       // Text: Most Recent
                       FadeInRight(
                         duration: Duration(milliseconds: 500),
@@ -291,5 +348,15 @@ class _ContactsPageState extends State<ContactsPage> {
         ),
       ),
     );
+  }
+
+  Container circle(Color color, [double diameter = 50.0]) {
+    return Container(
+        width: diameter,
+        height: diameter,
+        decoration: BoxDecoration(
+          color: color,
+          shape: BoxShape.circle,
+        ));
   }
 }

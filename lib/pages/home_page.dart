@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_advanced_drawer/flutter_advanced_drawer.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:provider/provider.dart';
-import 'package:qarz_app/values/user_avatars.dart';
+import 'package:qarz_app/pages/contacts_page.dart';
 import 'package:qarz_app/viewmodel/home_view_model.dart';
 import 'package:qarz_app/views/home_page_views.dart';
 
-import 'contacts_page.dart';
+import 'select_contact_page.dart';
 
 class HomePage extends StatefulWidget {
   static final String id = 'home_page';
@@ -116,7 +116,9 @@ class _HomePageState extends State<HomePage> {
 
                     // Menu : Dashboard, History, Contacts ...
                     ListTile(
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.pushNamed(context, ContactsPage.id);
+                      },
                       leading: Icon(Iconsax.profile_2user),
                       title: Text('Contacts'),
                     ),
@@ -301,7 +303,7 @@ class _HomePageState extends State<HomePage> {
                                           horizontal: 20, vertical: 0),
                                       onPressed: () {
                                         Navigator.pushNamed(
-                                            context, ContactsPage.id);
+                                            context, SelectContactPage.id);
                                       },
                                       child: Text(
                                         "Qarz qo'shish",
