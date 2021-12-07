@@ -229,7 +229,7 @@ class _HomePageState extends State<HomePage> {
                             child: Column(
                               children: [
                                 Text(
-                                  '\$ 1,840.00',
+                                  viewModel.sumOfDebts.toString(),
                                   style: TextStyle(
                                     color: Colors.black,
                                     fontSize: 22,
@@ -278,7 +278,7 @@ class _HomePageState extends State<HomePage> {
                                           width: 3,
                                         ),
                                         Text(
-                                          '1,840.00',
+                                          viewModel.sumOfDebts.toString(),
                                           style: TextStyle(
                                             fontSize: 28,
                                             fontWeight: FontWeight.bold,
