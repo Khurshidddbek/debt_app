@@ -14,6 +14,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "265142903745-mdr9idddahjvj8m7p5vqf0ftdnjdco47.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.qarz_app",
+            "certificate_hash": "f083c03673364b1d59b211bb9206cda847bb923d"
+          }
+        },
+        {
           "client_id": "265142903745-l4p7t6hhimlo3a6nni4ca4b497jbd00q.apps.googleusercontent.com",
           "client_type": 3
         }
