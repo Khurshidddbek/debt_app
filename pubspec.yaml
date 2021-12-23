@@ -29,6 +29,7 @@ dependencies:
   device_info: ^2.0.3
   grouped_list: ^4.1.0
   flutter_screenutil: ^5.0.1+2
+  google_sign_in: ^5.2.1
   ##flutter_plus: ^1.0.0 ## Error. Why? - I don't know
 
 dev_dependencies:
