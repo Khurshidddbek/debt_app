@@ -1,10 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:qarz_app/pages/home_page.dart';
 import 'package:qarz_app/services/authentication/validator.dart';
-import 'package:qarz_app/services/utils_service.dart';
 import 'package:qarz_app/viewmodel/Authentication/signin_view_model.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SignInPage extends StatefulWidget {
   static final String id = 'signin_page';
@@ -60,22 +59,23 @@ class _SignInPageState extends State<SignInPage> {
                               Text(
                                 'Login',
                                 style: TextStyle(
-                                    fontSize: 30, fontWeight: FontWeight.bold),
+                                    fontSize: 30.sp, fontWeight: FontWeight.bold),
                               ),
                               SizedBox(
-                                height: 20,
+                                height: 20.h,
                               ),
                               Text(
                                 'Login to your acount',
                                 style: TextStyle(
-                                    fontSize: 15, color: Colors.grey[700]),
+                                    fontSize: 15.sp, color: Colors.grey[700]),
                               ),
                             ],
                           ),
 
                           // Form
                           Padding(
-                            padding: EdgeInsets.all(40),
+                            //padding: EdgeInsets.all(40),
+                            padding: EdgeInsets.all(ScreenUtil().setWidth(40)),
                             child: Form(
                               key: SignInViewModel.formKey,
                               child: Column(
@@ -83,7 +83,7 @@ class _SignInPageState extends State<SignInPage> {
                                   makeInput(viewModel.emailController, 'Email',
                                       viewModel),
                                   SizedBox(
-                                    height: 40,
+                                    height: 40.h,
                                   ),
                                   makeInput(viewModel.passwordController,
                                       'Password', viewModel),
@@ -94,11 +94,12 @@ class _SignInPageState extends State<SignInPage> {
 
                           // Button : Sign in
                           Padding(
-                            padding: EdgeInsets.all(40),
+                            //padding: EdgeInsets.all(40),
+                            padding: EdgeInsets.all(ScreenUtil().setWidth(40)),
                             child: Container(
-                              padding: EdgeInsets.only(top: 3, left: 3),
+                              padding: EdgeInsets.only(top: 3.h, left: 3.w),
                               decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(50),
+                                  borderRadius: BorderRadius.circular(50.r),
                                   border: Border(
                                     bottom: BorderSide(color: Colors.black),
                                     top: BorderSide(color: Colors.black),
@@ -106,20 +107,20 @@ class _SignInPageState extends State<SignInPage> {
                                     right: BorderSide(color: Colors.black),
                                   )),
                               child: MaterialButton(
-                                height: 70,
+                                height: 70.h,
                                 minWidth: double.infinity,
                                 child: Text(
                                   'Login',
                                   style: TextStyle(
                                       color: Colors.white,
                                       fontWeight: FontWeight.w600,
-                                      fontSize: 18),
+                                      fontSize: 18.sp),
                                 ),
                                 onPressed: viewModel.doSignIn,
                                 color: Colors.grey[700],
                                 elevation: 0,
                                 shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(50)),
+                                    borderRadius: BorderRadius.circular(50.r)),
                               ),
                             ),
                           ),
@@ -134,13 +135,13 @@ class _SignInPageState extends State<SignInPage> {
                               Text(
                                 "Sign up",
                                 style: TextStyle(
-                                    fontWeight: FontWeight.w600, fontSize: 18),
+                                    fontWeight: FontWeight.w600, fontSize: 18.sp),
                               ),
                             ],
                           ),
 
                           SizedBox(
-                            height: 103,
+                            height: 103.h,
                           ),
                         ],
                       ),
@@ -153,7 +154,7 @@ class _SignInPageState extends State<SignInPage> {
               viewModel.isLoading
                   ? Center(
                       child: CupertinoActivityIndicator(
-                      radius: 40,
+                      radius: 40.r,
                     ))
                   : SizedBox.shrink(),
             ],
@@ -174,11 +175,11 @@ class _SignInPageState extends State<SignInPage> {
         labelText: _labelText,
         labelStyle: TextStyle(letterSpacing: 0),
         border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(30),
+          borderRadius: BorderRadius.circular(30.r),
           gapPadding: 0,
         ),
         errorBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(30),
+          borderRadius: BorderRadius.circular(30.r),
           gapPadding: 0,
           borderSide: BorderSide(
             color: Colors.red,

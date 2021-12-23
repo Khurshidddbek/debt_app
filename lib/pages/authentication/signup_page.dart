@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:qarz_app/pages/home_page.dart';
 import 'package:qarz_app/services/authentication/validator.dart';
 import 'package:qarz_app/viewmodel/Authentication/signup_view_model.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SignUpPage extends StatefulWidget {
   static final String id = 'signup_page';
@@ -53,28 +54,29 @@ class _SignUpPageState extends State<SignUpPage> {
                     children: [
                       Column(
                         children: [
-                          // Text: Login
+                          // Text: Sign up
                           Column(
                             children: [
                               Text(
                                 'Sign up',
                                 style: TextStyle(
-                                    fontSize: 30, fontWeight: FontWeight.bold),
+                                    fontSize: 30.sp, fontWeight: FontWeight.bold),
                               ),
                               SizedBox(
-                                height: 20,
+                                height: 5.h,
                               ),
                               Text(
                                 "Create an account, It's free",
                                 style: TextStyle(
-                                    fontSize: 15, color: Colors.grey[700]),
+                                    fontSize: 15.sp, color: Colors.grey[700]),
                               ),
                             ],
                           ),
 
                           // Form
                           Padding(
-                            padding: EdgeInsets.all(40),
+                            //padding: EdgeInsets.all(40),
+                            padding: EdgeInsets.all(ScreenUtil().setWidth(40)),
                             child: Form(
                               key: SignUpViewModel.formKey,
                               child: Column(
@@ -82,17 +84,17 @@ class _SignUpPageState extends State<SignUpPage> {
                                   makeInput(viewModel.nameController,
                                       'Full Name', viewModel, false),
                                   SizedBox(
-                                    height: 40,
+                                    height: 40.h,
                                   ),
                                   makeInput(viewModel.emailController, 'Email',
                                       viewModel, false),
                                   SizedBox(
-                                    height: 40,
+                                    height: 40.h,
                                   ),
                                   makeInput(viewModel.passwordController,
                                       'Password', viewModel, true),
                                   SizedBox(
-                                    height: 40,
+                                    height: 40.h,
                                   ),
                                   makeInput(viewModel.confirmPasswordController,
                                       'Confirm password', viewModel, true),
@@ -103,11 +105,12 @@ class _SignUpPageState extends State<SignUpPage> {
 
                           // Button : Sign up
                           Padding(
-                            padding: EdgeInsets.all(40),
+                            //padding: EdgeInsets.all(40),
+                            padding: EdgeInsets.symmetric(horizontal: 40.h),
                             child: Container(
-                              padding: EdgeInsets.only(top: 3, left: 3),
+                              padding: EdgeInsets.only(top: 3.h, left: 3.w),
                               decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(50),
+                                  borderRadius: BorderRadius.circular(50.r),
                                   border: Border(
                                     bottom: BorderSide(color: Colors.black),
                                     top: BorderSide(color: Colors.black),
@@ -115,23 +118,25 @@ class _SignUpPageState extends State<SignUpPage> {
                                     right: BorderSide(color: Colors.black),
                                   )),
                               child: MaterialButton(
-                                height: 70,
+                                height: 70.h,
                                 minWidth: double.infinity,
                                 child: Text(
                                   'Sign up',
                                   style: TextStyle(
                                       color: Colors.white,
                                       fontWeight: FontWeight.w600,
-                                      fontSize: 18),
+                                      fontSize: 18.sp),
                                 ),
                                 onPressed: viewModel.doSingUp,
                                 color: Colors.grey[700],
                                 elevation: 0,
                                 shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(50)),
+                                    borderRadius: BorderRadius.circular(50.r)),
                               ),
                             ),
                           ),
+
+                          SizedBox(height: 20.h,),
 
                           // Buton : Sign in
                           GestureDetector(
@@ -150,14 +155,14 @@ class _SignUpPageState extends State<SignUpPage> {
                                   "Login",
                                   style: TextStyle(
                                       fontWeight: FontWeight.w600,
-                                      fontSize: 18),
+                                      fontSize: 18.sp),
                                 ),
                               ],
                             ),
                           ),
 
                           SizedBox(
-                            height: 103,
+                            height: 103.h,
                           ),
                         ],
                       ),
@@ -170,7 +175,7 @@ class _SignUpPageState extends State<SignUpPage> {
               viewModel.isLoading
                   ? Center(
                       child: CupertinoActivityIndicator(
-                      radius: 40,
+                      radius: 40.r,
                     ))
                   : SizedBox.shrink(),
             ],
@@ -191,11 +196,11 @@ class _SignUpPageState extends State<SignUpPage> {
           labelText: _labelText,
           labelStyle: TextStyle(letterSpacing: 0),
           border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(30),
+            borderRadius: BorderRadius.circular(30.r),
             gapPadding: 0,
           ),
           errorBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(30),
+            borderRadius: BorderRadius.circular(30.r),
             gapPadding: 0,
             borderSide: BorderSide(
               color: Colors.red,
