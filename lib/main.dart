@@ -10,8 +10,13 @@ import 'package:qarz_app/pages/home_page.dart';
 import 'package:qarz_app/pages/settings_page.dart';
 import 'package:qarz_app/pages/Authentication/signin_page.dart';
 import 'package:qarz_app/pages/Authentication/signup_page.dart';
+import 'package:firebase_core/firebase_core.dart';
 
-void main() {
+Future main() async {
+  // Connect with Firebase
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+
   runApp(MyApp());
 }
 
